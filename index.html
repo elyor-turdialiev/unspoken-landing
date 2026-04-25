@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
 <title>Unspoken — The things you can't say out loud.</title>
-<meta name="description" content="A private, anonymous space to write what you can't tell anyone. Release what's in your heart. Join the waitlist for early access." />
+<meta name="description" content="A private, anonymous space to write what you can't say. Get a weekly literary reflection drawn from your own words. Begin quietly." />
 
 <!-- Open Graph / Social -->
 <meta property="og:title" content="Unspoken — The things you can't say out loud." />
@@ -114,6 +114,42 @@
     letter-spacing: 0.02em;
   }
   .nav-link:hover { color: var(--clay); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .nav-signin {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+  .nav-signin:hover { color: var(--clay); }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 9px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    background: var(--clay);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 540px) {
+    .nav-actions { gap: 16px; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+  }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -229,6 +265,79 @@
     line-height: 1.5;
   }
   .form-success.show { display: block; animation: fadeUp 0.6s ease-out; }
+
+  /* ---------- Hero & Closing CTAs (replaced waitlist forms) ---------- */
+  .hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s ease-out forwards;
+  }
+  .closing-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 16px 32px;
+    border-radius: 100px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 16px rgba(26, 22, 19, 0.08);
+  }
+  .cta-primary:hover {
+    background: var(--clay);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(184, 92, 60, 0.18);
+  }
+  .cta-primary-large {
+    font-size: 17px;
+    padding: 18px 40px;
+  }
+  .cta-secondary {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+  .cta-secondary:hover {
+    color: var(--clay);
+    border-bottom-color: var(--clay-soft, #d68a6c);
+  }
+  .cta-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--ink-whisper);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.85s ease-out forwards;
+  }
+  .closing .cta-note {
+    opacity: 1;
+    animation: none;
+    margin-top: 22px;
+  }
+  @media (max-width: 540px) {
+    .hero-cta-group { gap: 14px; }
+    .cta-primary { padding: 14px 26px; font-size: 14px; }
+    .cta-primary-large { padding: 16px 32px; font-size: 15px; }
+  }
 
   /* ---------- Divider ornament ---------- */
   .ornament {
@@ -839,38 +948,24 @@
       </span>
       unspoken
     </a>
-    <a href="#waitlist" class="nav-link">Join the waitlist →</a>
+    <span></span>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">Coming soon • A quiet place on the internet</div>
+    <div class="eyebrow">Feelings want to be free • A quiet place on the internet</div>
     <h1>Write what you can't say.<br>We'll <em>read it back</em> to you.</h1>
     <p class="lede">
       A private, anonymous place to write what's in your heart. Get a weekly reflection, drawn from your own words. And when writing isn't enough — talk to a real, trained, anonymous listener.
     </p>
 
-    <form class="waitlist" id="waitlistForm">
-      <div class="form-row">
-        <input
-          type="email"
-          name="email"
-          placeholder="your.email@example.com"
-          required
-          autocomplete="email"
-          id="emailInput"
-        />
-        <button type="submit">Get early access</button>
-      </div>
-      <p class="form-note">No spam. One quiet email when we open the doors.</p>
-    </form>
-
-    <div class="form-success" id="formSuccess">
-      You're on the list.<br>
-      We'll write to you when Unspoken is ready — not a moment sooner.
+    <div class="hero-cta-group">
+      <a href="https://inner-wordsmith.lovable.app" class="cta-primary">Begin quietly →</a>
+      <a href="https://inner-wordsmith.lovable.app" class="cta-secondary">Or sign in</a>
     </div>
+    <p class="cta-note">Free to begin. Private by default. No one reads what you write but you.</p>
   </div>
 </section>
 
@@ -1075,30 +1170,16 @@
 </section>
 
 <!-- CLOSING CTA -->
-<section class="closing fade-in" id="waitlist">
+<section class="closing fade-in" id="begin">
   <div class="wrap">
-    <h2 class="section-title">Be the first to <em>exhale.</em></h2>
-    <p class="section-intro">We're opening the doors slowly, to a small group first. Leave your email and we'll let you in.</p>
+    <h2 class="section-title">Whenever you're <em>ready.</em></h2>
+    <p class="section-intro">No waitlist. No invitations. Just open the door and begin writing what you can't say.</p>
 
-    <form class="waitlist" id="waitlistForm2">
-      <div class="form-row">
-        <input
-          type="email"
-          name="email"
-          placeholder="your.email@example.com"
-          required
-          autocomplete="email"
-          id="emailInput2"
-        />
-        <button type="submit">Get early access</button>
-      </div>
-      <p class="form-note">No spam. One quiet email when we open the doors.</p>
-    </form>
-
-    <div class="form-success" id="formSuccess2">
-      You're on the list.<br>
-      We'll write to you when Unspoken is ready — not a moment sooner.
+    <div class="closing-cta-group">
+      <a href="https://inner-wordsmith.lovable.app" class="cta-primary cta-primary-large">Begin quietly →</a>
+      <a href="https://inner-wordsmith.lovable.app" class="cta-secondary">Already have an account? Sign in.</a>
     </div>
+    <p class="cta-note">Free to begin · Private by default · Leave any time</p>
   </div>
 </section>
 
@@ -1118,43 +1199,6 @@
 </footer>
 
 <script>
-  // ---------- Waitlist handler (drop-in: swap the fetch URL for Formspree / Mailchimp / Resend / Supabase) ----------
-  function handleWaitlist(formId, inputId, successId) {
-    const form = document.getElementById(formId);
-    const input = document.getElementById(inputId);
-    const success = document.getElementById(successId);
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = input.value.trim();
-      if (!email || !email.includes('@')) return;
-
-      // REPLACE THIS BLOCK with your actual endpoint.
-      // Option A (fastest): Formspree — replace YOUR_ID below
-      // Option B: Mailchimp / ConvertKit / Resend / Supabase function
-      try {
-        await fetch('https://formspree.io/f/xwvawdyd', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, source: 'unspoken-landing' })
-        });
-      } catch (err) {
-        // Silent fallback — still show success so user experience stays calm
-        console.log('Submission queued locally.', err);
-      }
-
-      form.style.display = 'none';
-      success.classList.add('show');
-
-      // Basic analytics event (if you add Plausible/PostHog later)
-      if (window.plausible) window.plausible('Waitlist Signup');
-    });
-  }
-
-  handleWaitlist('waitlistForm', 'emailInput', 'formSuccess');
-  handleWaitlist('waitlistForm2', 'emailInput2', 'formSuccess2');
-
   // ---------- Scroll-triggered fade-ins ----------
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
