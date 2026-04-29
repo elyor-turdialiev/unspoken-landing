@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Ayuda — Unspoken</title>
+  <meta name="description" content="Si lo que llevas es demasiado pesado para cargarlo solo, por favor busca a alguien que pueda escucharte. Líneas de crisis y recursos de confianza." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Fonts: Fraunces (serif, literary warmth) + Inter Tight (clean sans for UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon placeholder (matches landing) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%89%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --ink: #1a1613;
+      --ink-soft: #433a34;
+      --ink-whisper: #7a6f67;
+      --paper: #f5efe6;
+      --paper-warm: #ede4d5;
+      --cream: #faf6ee;
+      --clay: #b85c3c;
+      --clay-soft: #d68a6c;
+      --sage: #6b7a5a;
+      --rule: rgba(26, 22, 19, 0.12);
+
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1000px 700px at 50% 0%, rgba(184, 92, 60, 0.04), transparent 60%);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- Top nav ---------- */
+    nav.top {
+      padding: 28px 0 0;
+    }
+    nav.top .wrap {
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo svg { color: var(--clay); }
+
+    .back-link {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: var(--clay); }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      padding: 80px 0 50px;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: var(--clay);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--clay);
+      font-weight: 400;
+    }
+    .lede {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(18px, 1.8vw, 21px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+      max-width: 600px;
+    }
+    .lede em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    /* ---------- Resources ---------- */
+    .resources {
+      padding: 60px 0 40px;
+    }
+    .group {
+      margin-bottom: 56px;
+    }
+    .group-title {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: var(--ink-whisper);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .line {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .line:last-child { border-bottom: none; }
+
+    .line-name {
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .line-name em {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-left: 6px;
+      font-size: 15px;
+    }
+    .line-number {
+      font-family: var(--sans);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--clay);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .line-number:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .line-meta {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-whisper);
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+    .line-meta a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    .line-meta a:hover {
+      color: var(--clay);
+      border-color: var(--clay-soft);
+    }
+
+    /* ---------- Reassurance section ---------- */
+    .reassurance {
+      padding: 60px 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 30px;
+    }
+    .reassurance h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 3vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .reassurance h2 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+    .reassurance p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+    }
+    .reassurance p em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-text {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      letter-spacing: 0.02em;
+    }
+    .footer-text a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-left: 16px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+    .footer-text a:hover {
+      color: var(--clay);
+      border-color: var(--clay-soft);
+    }
+
+    @media (max-width: 600px) {
+      header.hero { padding: 56px 0 36px; }
+      .resources { padding: 40px 0 30px; }
+      .reassurance { padding: 44px 0; }
+      .group { margin-bottom: 40px; }
+      .line-number { font-size: 19px; }
+      footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-text a { margin-left: 0; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="Unspoken home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+      unspoken
+    </a>
+    <a href="/" class="back-link">Inicio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Ayuda · Cuando escribir no alcanza</div>
+    <h1>Si lo que llevas se siente <em>demasiado pesado</em> para cargarlo solo, por favor busca a alguien que pueda escucharte.</h1>
+    <p class="lede">
+      Unspoken es un lugar tranquilo para escribir. <em>No</em> es un sustituto de la ayuda humana en una crisis. Si estás en peligro, en desesperación, o simplemente necesitas una voz real al otro lado de la línea — las personas a continuación están capacitadas, son gratuitas y están esperando.
+    </p>
+  </div>
+</header>
+
+<!-- RESOURCES -->
+<section class="resources">
+  <div class="wrap">
+
+    <!-- LATVIA -->
+    <div class="group">
+      <div class="group-title">Letonia</div>
+
+      <div class="line">
+        <div class="line-name">Skalbes <em>— línea de crisis, 24/7</em></div>
+        <a href="tel:116123" class="line-number">116 123</a>
+        <div class="line-meta">
+          Gratis, anónimo, 24 horas. Asesoramiento en letón, ruso e inglés. <a href="https://www.skalbes.lv/en/" target="_blank" rel="noopener">skalbes.lv</a>
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Skalbes <em>— línea directa</em></div>
+        <a href="tel:+37167222922" class="line-number">+371 67 222 922</a>
+        <div class="line-meta">Mismo servicio, número internacional completo. También: +371 27 722 292.</div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Línea de ayuda infantil y juvenil <em>— menores de 18</em></div>
+        <a href="tel:116111" class="line-number">116 111</a>
+        <div class="line-meta">
+          Gratis, 24/7. Chat en línea disponible Lun–Vie 12:00–20:00. <a href="https://uzticibastalrunis.lv" target="_blank" rel="noopener">uzticibastalrunis.lv</a>
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Apoyo a víctimas <em>— si te han hecho daño</em></div>
+        <a href="tel:116006" class="line-number">116 006</a>
+        <div class="line-meta">Para sobrevivientes de violencia, abuso o crimen. Diario 12:00–22:00.</div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Emergencias <em>— peligro inmediato</em></div>
+        <a href="tel:112" class="line-number">112</a>
+        <div class="line-meta">Policía, ambulancia, bomberos. Cualquier país de la UE, cualquier idioma.</div>
+      </div>
+    </div>
+
+    <!-- EUROPE -->
+    <div class="group">
+      <div class="group-title">En toda Europa</div>
+
+      <div class="line">
+        <div class="line-name">Línea europea de apoyo emocional</div>
+        <a href="tel:116123" class="line-number">116 123</a>
+        <div class="line-meta">Un número gratuito y armonizado reconocido en la mayoría de los países de la UE. Conecta con el servicio local de crisis.</div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Número europeo de emergencias</div>
+        <a href="tel:112" class="line-number">112</a>
+        <div class="line-meta">Para cualquier emergencia que ponga en peligro la vida, en cualquier lugar de Europa.</div>
+      </div>
+    </div>
+
+    <!-- INTERNATIONAL -->
+    <div class="group">
+      <div class="group-title">Internacional</div>
+
+      <div class="line">
+        <div class="line-name">Find A Helpline <em>— directorio por país</em></div>
+        <div class="line-meta" style="margin-top: 8px;">
+          Un directorio global verificado de líneas de crisis, por país y tema. <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="line-name">Befrienders Worldwide</div>
+        <div class="line-meta" style="margin-top: 8px;">
+          Una red de centros de apoyo emocional en más de 30 países. <a href="https://www.befrienders.org" target="_blank" rel="noopener">befrienders.org</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REASSURANCE -->
+<section class="reassurance">
+  <div class="wrap">
+    <h2>Lo que escribes aquí se queda <em>aquí.</em></h2>
+    <p>
+      Nada de lo que escribes en Unspoken se comparte, se vende ni lo lee nadie más que tú. No monitoreamos las entradas. No tenemos detección de pánico. Es por diseño — Unspoken es un espacio privado de escritura, no un sistema de seguridad.
+    </p>
+    <p>
+      <em>Por eso esta página existe.</em> Si lo que llevas esta noche necesita más de lo que el papel puede sostener, por favor usa una de las líneas de arriba. Fueron creadas para esto. Son discretas, gratuitas y no te juzgarán.
+    </p>
+    <p>
+      No estás solo, aunque se sienta así.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-text">Un proyecto tranquilo desde Riga.</div>
+    <div class="footer-text">
+      <a href="/">Inicio</a>
+      <a href="/care_es.html">Care</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
