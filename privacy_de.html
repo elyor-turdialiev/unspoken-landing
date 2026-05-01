@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Datenschutz — Unspoken</title>
+  <meta name="description" content="Wie Unspoken mit deinen Daten umgeht. Was wir sammeln, wie wir es schützen und was wir niemals damit tun werden." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%89%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --ink: #1a1613;
+      --ink-soft: #433a34;
+      --ink-whisper: #7a6f67;
+      --paper: #f5efe6;
+      --cream: #faf6ee;
+      --clay: #b85c3c;
+      --clay-soft: #d68a6c;
+      --rule: rgba(26, 22, 19, 0.12);
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(1000px 700px at 50% 0%, rgba(184, 92, 60, 0.04), transparent 60%);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav.top { padding: 28px 0 0; }
+    nav.top .wrap {
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: var(--clay); }
+
+    header.hero {
+      padding: 80px 0 40px;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 24px;
+    }
+    header h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+    header .lede {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .content {
+      padding: 40px 0 60px;
+    }
+    .updated {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .section p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+    .section p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .section p em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-text {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      letter-spacing: 0.02em;
+    }
+    .footer-text a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-left: 16px;
+      border-bottom: 1px solid transparent;
+    }
+    .footer-text a:hover {
+      color: var(--clay);
+      border-color: var(--clay-soft);
+    }
+
+    @media (max-width: 600px) {
+      header.hero { padding: 56px 0 30px; }
+      footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-text a { margin-left: 0; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="/" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+      unspoken
+    </a>
+    <a href="/" class="back-link">Startseite</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Datenschutzrichtlinie</div>
+    <h1>Deine Worte gehören <em>dir.</em></h1>
+    <p class="lede">
+      Diese Seite erklärt, welche Daten Unspoken sammelt, wie wir sie schützen und was wir niemals damit tun werden. Geschrieben für Menschen, nicht für Anwälte.
+    </p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+
+    <div class="updated">Letzte Aktualisierung: 29. April 2026</div>
+
+    <div class="section">
+      <h2>Wer wir sind</h2>
+      <p>Unspoken wird betrieben von <strong>Elyorbek Turdialiev</strong>, Riga, Lettland. Im Sinne der EU-DSGVO ist Elyorbek Turdialiev der Verantwortliche.</p>
+      <p>Kontakt: <strong>hello@unspoken.app</strong></p>
+    </div>
+
+    <div class="section">
+      <h2>Was wir sammeln</h2>
+      <p><strong>Kontoinformationen:</strong> Deine E-Mail-Adresse und ein gehashtes Passwort. Wir fragen nicht nach Name, Telefonnummer, Standort oder anderen identifizierenden Informationen.</p>
+      <p><strong>Deine Einträge:</strong> Was du in Unspoken schreibst, wird in unserer Datenbank gespeichert, damit du darauf zugreifen kannst und wöchentliche Reflexionen generiert werden können. Verschlüsselt bei der Übertragung (HTTPS), gespeichert auf Supabase-Servern (EU).</p>
+      <p><strong>Stimmungsauswahl:</strong> Wenn du einen Eintrag mit einer Stimmung markierst, wird diese zusammen mit dem Eintrag gespeichert.</p>
+      <p><strong>Einstellungen:</strong> Deine Zeitzone, Sprachpräferenz und andere Einstellungen.</p>
+      <p><strong>Reflexionsdaten:</strong> Wöchentliche Reflexionen werden gespeichert, damit du sie erneut lesen kannst.</p>
+      <p><strong>Technische Daten:</strong> Wir sammeln minimale technische Daten: Browsertyp, ungefähre Sitzungszeiten. Kein Tracking, keine Werbepixel, kein Fingerprinting.</p>
+    </div>
+
+    <div class="section">
+      <h2>Wie wir deine Daten nutzen</h2>
+      <p><strong>Zur Bereitstellung des Dienstes:</strong> Deine Einträge und Stimmungsdaten werden zur Erstellung wöchentlicher Reflexionen verwendet. Die Verarbeitung erfolgt durch die Anthropic API (Claude). Daten werden nicht zum Training der Modelle verwendet.</p>
+      <p><strong>Zur Kommunikation:</strong> Wir können dir deine wöchentliche Reflexion per E-Mail senden. Keine Marketing-E-Mails.</p>
+      <p><strong>Zur Verbesserung:</strong> Wir analysieren möglicherweise aggregierte, anonyme Nutzungsmuster. Niemals einzelne Einträge.</p>
+    </div>
+
+    <div class="section">
+      <h2>Was wir niemals tun werden</h2>
+      <p>Wir werden deine Daten <em>niemals</em> an Werbekunden oder Dritte verkaufen.</p>
+      <p>Wir werden dir <em>niemals</em> Werbung zeigen.</p>
+      <p>Wir werden deine Einträge <em>niemals</em> manuell lesen, es sei denn, du bittest uns ausdrücklich darum.</p>
+      <p>Wir werden deine Einträge <em>niemals</em> mit anderen Nutzern teilen, es sei denn, du entscheidest dich aktiv dafür.</p>
+      <p>Wir werden deine Einträge <em>niemals</em> zum Training von KI-Modellen verwenden.</p>
+    </div>
+
+    <div class="section">
+      <h2>Drittanbieterdienste</h2>
+      <p><strong>Supabase:</strong> Datenbank- und Authentifizierungshosting. Server in der EU.</p>
+      <p><strong>Anthropic (Claude API):</strong> Verarbeitet Einträge für wöchentliche Reflexionen. Daten werden nicht gespeichert oder für Training verwendet.</p>
+      <p><strong>Netlify:</strong> Hostet die Marketing-Website (keine Nutzerdaten).</p>
+      <p><strong>Resend:</strong> E-Mail-Zustelldienst für Reflexionen. (Einrichtung ausstehend.)</p>
+    </div>
+
+    <div class="section">
+      <h2>Datenspeicherung</h2>
+      <p>Deine Einträge und Reflexionen werden gespeichert, solange dein Konto existiert. Du kannst einzelne Einträge jederzeit löschen. Kontolöschung ist dauerhaft und unwiderruflich.</p>
+      <p>Du kannst alle Daten jederzeit als JSON exportieren.</p>
+    </div>
+
+    <div class="section">
+      <h2>Deine Rechte nach DSGVO</h2>
+      <p>Im Europäischen Wirtschaftsraum hast du das Recht auf: Zugang zu deinen Daten; Berichtigung; Löschung; Export; Widerspruch gegen Verarbeitung; Widerruf der Einwilligung.</p>
+      <p>Zur Ausübung dieser Rechte schreibe an <strong>hello@unspoken.app</strong>. Wir antworten innerhalb von 30 Tagen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Datenschutz für Kinder</h2>
+      <p>Unspoken ist für Nutzer ab 13 Jahren verfügbar. Nutzer von 13 bis 15 Jahren benötigen die Zustimmung eines Elternteils. Ab 16 Jahren ist eigenständige Einwilligung möglich. Daten von Kindern unter 13 ohne Einwilligung werden gelöscht.</p>
+      <p>Wenn du ein Elternteil bist und glaubst, dass dein Kind ein Konto ohne Einwilligung erstellt hat, kontaktiere uns: <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>Cookies</h2>
+      <p>Unspoken verwendet nur essenzielle Cookies für Authentifizierung und Sitzungsverwaltung. Kein Tracking. Es gibt nichts abzulehnen, weil wir dich nicht verfolgen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Sicherheit</h2>
+      <p>Alle Daten werden über HTTPS übertragen. Passwörter werden gehasht und nie im Klartext gespeichert. Wir folgen branchenüblichen Sicherheitspraktiken.</p>
+      <p>Trotz unserer Bemühungen ist kein System perfekt sicher. Bei Sicherheitslücken kontaktiere uns: <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>Änderungen dieser Richtlinie</h2>
+      <p>Bei wesentlichen Änderungen benachrichtigen wir dich per E-Mail oder in der App. Das Aktualisierungsdatum oben zeigt die letzte Überarbeitung.</p>
+    </div>
+
+    <div class="section">
+      <h2>Kontakt</h2>
+      <p>Bei Fragen zu dieser Datenschutzrichtlinie schreibe an <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-text">Ein stilles Projekt aus Riga.</div>
+    <div class="footer-text">
+      <a href="/">Home</a>
+      <a href="/care_de.html">Hilfe</a>
+      <a href="/terms.html">Nutzungsbedingungen</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

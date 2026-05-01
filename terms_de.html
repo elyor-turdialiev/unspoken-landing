@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Nutzungsbedingungen — Unspoken</title>
+  <meta name="description" content="Nutzungsbedingungen für Unspoken. Was der Dienst ist, wie man ihn nutzt und was wir voneinander erwarten." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%89%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --ink: #1a1613;
+      --ink-soft: #433a34;
+      --ink-whisper: #7a6f67;
+      --paper: #f5efe6;
+      --cream: #faf6ee;
+      --clay: #b85c3c;
+      --clay-soft: #d68a6c;
+      --rule: rgba(26, 22, 19, 0.12);
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(1000px 700px at 50% 0%, rgba(184, 92, 60, 0.04), transparent 60%);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav.top { padding: 28px 0 0; }
+    nav.top .wrap {
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: var(--clay); }
+
+    header.hero {
+      padding: 80px 0 40px;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 24px;
+    }
+    header h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+    header .lede {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .content {
+      padding: 40px 0 60px;
+    }
+    .updated {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .section p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+    .section p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .section p em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-text {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      letter-spacing: 0.02em;
+    }
+    .footer-text a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-left: 16px;
+      border-bottom: 1px solid transparent;
+    }
+    .footer-text a:hover {
+      color: var(--clay);
+      border-color: var(--clay-soft);
+    }
+
+    @media (max-width: 600px) {
+      header.hero { padding: 56px 0 30px; }
+      footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-text a { margin-left: 0; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="/" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+      unspoken
+    </a>
+    <a href="/" class="back-link">Startseite</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Nutzungsbedingungen</div>
+    <h1>Einige Dinge, die wir <em>voneinander</em> erwarten.</h1>
+    <p class="lede">
+      Diese Bedingungen regeln deine Nutzung von Unspoken. Sie sind klar geschrieben, weil wir glauben, dass du verstehen solltest, dem du zustimmst.
+    </p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+
+    <div class="updated">Letzte Aktualisierung: 29. April 2026</div>
+
+    <div class="section">
+      <h2>Was Unspoken ist</h2>
+      <p>Unspoken ist eine private Schreib-App. Sie bietet einen Raum zum Schreiben, ein Stimmungs-Tagging-System, wöchentliche KI-generierte Reflexionen aus deinen eigenen Worten und (zukünftig) Zugang zu geschulten, anonymen Zuhörern.</p>
+      <p>Unspoken ist <em>kein</em> psychischer Gesundheitsdienst, Kriseninterventionswerkzeug, Therapieplattform oder medizinisches Gerät. Es diagnostiziert, behandelt oder überwacht keine psychischen Erkrankungen. Wenn du in einer Krise bist, besuche unsere <a href="/care_de.html" style="color: var(--clay); text-decoration: none; border-bottom: 1px solid var(--clay-soft);">Hilfe-Seite</a> für Krisenressourcen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Berechtigung</h2>
+      <p>Du musst mindestens <strong>13 Jahre alt</strong> sein, um Unspoken zu nutzen. Wenn du zwischen 13 und 15 Jahre alt bist, benötigst du die Zustimmung eines Elternteils oder Erziehungsberechtigten. Ab 16 Jahren kannst du eigenständig ein Konto erstellen.</p>
+      <p>Mit der Erstellung eines Kontos bestätigst du, dass du die Altersanforderungen erfüllst.</p>
+    </div>
+
+    <div class="section">
+      <h2>Dein Konto</h2>
+      <p>Du bist für die Sicherheit deiner Anmeldedaten und alle Aktivitäten in deinem Konto verantwortlich. Bei Verdacht auf Kompromittierung kontaktiere uns: <strong>hello@unspoken.app</strong>.</p>
+      <p>Du kannst dein Konto jederzeit in den Einstellungen löschen. Die Löschung ist dauerhaft und unwiderruflich.</p>
+    </div>
+
+    <div class="section">
+      <h2>Dein Inhalt</h2>
+      <p><strong>Was du schreibst, gehört dir.</strong> Alles, was du in Unspoken schreibst, gehört dir. Wir beanspruchen kein Eigentum an deinen Einträgen, Reflexionen oder Inhalten.</p>
+      <p>Mit der Nutzung von Unspoken erteilst du uns eine eingeschränkte Lizenz zur Speicherung und Verarbeitung deiner Einträge ausschließlich zur Bereitstellung des Dienstes. Diese Lizenz erlischt bei Kontolöschung.</p>
+      <p>Wir werden deine Texte niemals veröffentlichen, teilen oder für andere Zwecke als die Bereitstellung des Dienstes verwenden.</p>
+    </div>
+
+    <div class="section">
+      <h2>Akzeptable Nutzung</h2>
+      <p>Unspoken ist ein privater Schreibraum. Du kannst schreiben, was du brauchst. Wir überwachen, lesen oder moderieren deine Einträge nicht.</p>
+      <p>Du stimmst zu, Unspoken nicht zu verwenden für: Verbreitung von Schadsoftware; Zugriffsversuche auf andere Konten; Belästigung oder Bedrohung; automatisierte Überlastung des Dienstes.</p>
+      <p>Bei schweren Verstößen behalten wir uns das Recht vor, das Konto zu sperren oder zu löschen.</p>
+    </div>
+
+    <div class="section">
+      <h2>KI-generierte Reflexionen</h2>
+      <p>Wöchentliche Reflexionen werden durch KI (Anthropic Claude API) basierend auf deinen Einträgen erstellt. Es sind literarische Beobachtungen, keine professionelle Beratung. Sie können Ungenauigkeiten enthalten. Sie sind keine Therapie, Diagnose oder medizinische Beratung.</p>
+      <p>Du solltest dich niemals auf eine KI-generierte Reflexion als Ersatz für professionelle psychische Unterstützung verlassen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Der Zuhörraum (zukünftige Funktion)</h2>
+      <p>Der Zuhörraum verbindet dich mit geschulten, anonymen menschlichen Zuhörern. Sie sind keine lizenzierten Therapeuten. Sitzungen sind keine Therapie, sondern empathische Gespräche ohne Wertung.</p>
+      <p>Diese Funktion ist noch nicht verfügbar. Die Bedingungen werden beim Start des Zuhörraums aktualisiert.</p>
+    </div>
+
+    <div class="section">
+      <h2>Verfügbarkeit und Änderungen</h2>
+      <p>Wir bemühen uns, Unspoken verfügbar zu halten, garantieren aber keinen unterbrechungsfreien Dienst. Über wesentliche Änderungen informieren wir dich vorab.</p>
+    </div>
+
+    <div class="section">
+      <h2>Haftungsbeschränkung</h2>
+      <p>Unspoken wird „wie besehen" ohne Garantien bereitgestellt. Im gesetzlich zulässigen Rahmen haften wir nicht für indirekte oder Folgeschäden.</p>
+      <p>Wir sind nicht verantwortlich für den Inhalt von KI-Reflexionen, Aussagen von Zuhörern oder Entscheidungen, die du auf Basis von Unspoken triffst.</p>
+    </div>
+
+    <div class="section">
+      <h2>Anwendbares Recht</h2>
+      <p>Diese Bedingungen unterliegen dem Recht der Republik Lettland. Streitigkeiten unterliegen der ausschließlichen Zuständigkeit der Gerichte in Riga, Lettland.</p>
+    </div>
+
+    <div class="section">
+      <h2>Änderungen dieser Bedingungen</h2>
+      <p>Wir können diese Bedingungen aktualisieren. Über wesentliche Änderungen informieren wir per E-Mail oder in der App. Weitere Nutzung nach Änderungen gilt als Zustimmung.</p>
+    </div>
+
+    <div class="section">
+      <h2>Kontakt</h2>
+      <p>Bei Fragen zu diesen Bedingungen schreibe an <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-text">Ein stilles Projekt aus Riga.</div>
+    <div class="footer-text">
+      <a href="/">Home</a>
+      <a href="/care.html">Hilfe</a>
+      <a href="/privacy.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

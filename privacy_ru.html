@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Конфиденциальность — Unspoken</title>
+  <meta name="description" content="Как Unspoken обращается с вашими данными. Что мы собираем, как защищаем и чего никогда не сделаем." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%89%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --ink: #1a1613;
+      --ink-soft: #433a34;
+      --ink-whisper: #7a6f67;
+      --paper: #f5efe6;
+      --cream: #faf6ee;
+      --clay: #b85c3c;
+      --clay-soft: #d68a6c;
+      --rule: rgba(26, 22, 19, 0.12);
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(1000px 700px at 50% 0%, rgba(184, 92, 60, 0.04), transparent 60%);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav.top { padding: 28px 0 0; }
+    nav.top .wrap {
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: var(--clay); }
+
+    header.hero {
+      padding: 80px 0 40px;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 24px;
+    }
+    header h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+    header .lede {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .content {
+      padding: 40px 0 60px;
+    }
+    .updated {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .section p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+    .section p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .section p em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-text {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-whisper);
+      letter-spacing: 0.02em;
+    }
+    .footer-text a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-left: 16px;
+      border-bottom: 1px solid transparent;
+    }
+    .footer-text a:hover {
+      color: var(--clay);
+      border-color: var(--clay-soft);
+    }
+
+    @media (max-width: 600px) {
+      header.hero { padding: 56px 0 30px; }
+      footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-text a { margin-left: 0; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="/" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+      unspoken
+    </a>
+    <a href="/" class="back-link">Главная</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Политика конфиденциальности</div>
+    <h1>Ваши слова — <em>ваши.</em></h1>
+    <p class="lede">
+      На этой странице объясняется, какие данные собирает Unspoken, как мы их защищаем и чего никогда не сделаем. Мы написали это для людей, а не для юристов.
+    </p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+
+    <div class="updated">Последнее обновление: 29 апреля 2026</div>
+
+    <div class="section">
+      <h2>Кто мы</h2>
+      <p>Unspoken управляется <strong>Элёрбеком Турдиалиевым</strong>, Рига, Латвия. Для целей Общего регламента защиты данных ЕС (GDPR) Элёрбек Турдиалиев является контролёром данных.</p>
+      <p>Контакт: <strong>hello@unspoken.app</strong></p>
+    </div>
+
+    <div class="section">
+      <h2>Что мы собираем</h2>
+      <p><strong>Информация аккаунта:</strong> Ваш адрес электронной почты и хешированный пароль. Они нужны для создания и защиты вашего аккаунта. Мы не запрашиваем имя, номер телефона, местоположение или другую идентифицирующую информацию.</p>
+      <p><strong>Ваши записи:</strong> Записи, которые вы делаете в Unspoken, хранятся в нашей базе данных, чтобы вы могли возвращаться к ним и чтобы генерировать еженедельные отражения. Записи шифруются при передаче (HTTPS) и хранятся на серверах Supabase (в ЕС).</p>
+      <p><strong>Выбор настроения:</strong> Когда вы отмечаете запись настроением (например, «спокоен», «устал»), этот выбор сохраняется вместе с записью.</p>
+      <p><strong>Настройки:</strong> Ваш часовой пояс, языковые предпочтения и другие параметры.</p>
+      <p><strong>Данные отражений:</strong> Еженедельные отражения, созданные на основе ваших записей, сохраняются для повторного просмотра.</p>
+      <p><strong>Технические данные:</strong> Мы собираем минимальные технические данные для работы сервиса: тип браузера, примерное время сессий. Мы не используем аналитические трекеры, рекламные пиксели или фингерпринтинг.</p>
+    </div>
+
+    <div class="section">
+      <h2>Как мы используем ваши данные</h2>
+      <p><strong>Для предоставления сервиса:</strong> Ваши записи и данные о настроении используются для создания еженедельных отражений. Обработка выполняется через API Anthropic (Claude). Ваши записи отправляются в API Anthropic исключительно для генерации отражения. Политика Anthropic гласит, что данные, отправленные через API, не используются для обучения их моделей.</p>
+      <p><strong>Для связи с вами:</strong> Мы можем отправлять еженедельное отражение по электронной почте (если вы подписались). Мы не отправляем маркетинговые письма.</p>
+      <p><strong>Для улучшения сервиса:</strong> Мы можем анализировать агрегированные анонимные данные об использовании (например, сколько записей в неделю делают все пользователи). Мы никогда не анализируем отдельные записи для этого.</p>
+    </div>
+
+    <div class="section">
+      <h2>Чего мы никогда не сделаем</h2>
+      <p>Мы <em>никогда</em> не продадим ваши данные рекламодателям или третьим лицам.</p>
+      <p>Мы <em>никогда</em> не покажем вам рекламу.</p>
+      <p>Мы <em>никогда</em> не прочитаем ваши записи вручную, если вы сами не попросите (например, при обращении в поддержку).</p>
+      <p>Мы <em>никогда</em> не покажем ваши записи другим пользователям, если вы сами не решите поделиться.</p>
+      <p>Мы <em>никогда</em> не используем ваши записи для обучения ИИ. API Anthropic обрабатывает записи только для генерации отражения и удаляет их после.</p>
+    </div>
+
+    <div class="section">
+      <h2>Сторонние сервисы</h2>
+      <p><strong>Supabase:</strong> Хостинг базы данных и аутентификации. Серверы расположены в ЕС. Supabase обрабатывает данные по нашим инструкциям.</p>
+      <p><strong>Anthropic (Claude API):</strong> Обрабатывает записи для генерации еженедельных отражений. Данные не сохраняются и не используются для обучения согласно политике Anthropic.</p>
+      <p><strong>Netlify:</strong> Хостинг маркетингового сайта (пользовательские данные не обрабатываются через Netlify).</p>
+      <p><strong>Resend:</strong> Сервис доставки email для отправки отражений. Обрабатывает ваш email для доставки сообщений. (В процессе настройки.)</p>
+    </div>
+
+    <div class="section">
+      <h2>Хранение данных</h2>
+      <p>Ваши записи и отражения хранятся, пока существует ваш аккаунт. Вы можете удалить отдельные записи в любое время. Вы можете удалить аккаунт и все данные в Настройках. Удаление аккаунта необратимо — данные невозможно восстановить.</p>
+      <p>Вы можете экспортировать все данные (записи, отражения, настройки) в формате JSON в любое время.</p>
+    </div>
+
+    <div class="section">
+      <h2>Ваши права по GDPR</h2>
+      <p>Если вы находитесь в Европейской экономической зоне, вы имеете право: получить доступ к личным данным; исправить неточные данные; запросить удаление данных; экспортировать данные; возразить против обработки; отозвать согласие в любое время.</p>
+      <p>Для реализации этих прав напишите на <strong>hello@unspoken.app</strong>. Мы ответим в течение 30 дней.</p>
+    </div>
+
+    <div class="section">
+      <h2>Конфиденциальность детей</h2>
+      <p>Unspoken доступен пользователям от 13 лет. Пользователям от 13 до 15 лет требуется согласие родителя или опекуна для создания аккаунта в соответствии с требованиями GDPR. Пользователи от 16 лет могут дать согласие самостоятельно. Если мы узнаем, что собрали данные ребёнка младше 13 лет без соответствующего согласия, мы удалим эти данные.</p>
+      <p>Если вы родитель или опекун и считаете, что ваш ребёнок создал аккаунт без вашего согласия, свяжитесь с нами: <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>Файлы cookie</h2>
+      <p>Unspoken использует только необходимые cookie для аутентификации и управления сессиями. Мы не используем отслеживающие, аналитические или рекламные cookie. Отказываться не от чего, потому что мы вас не отслеживаем.</p>
+    </div>
+
+    <div class="section">
+      <h2>Безопасность</h2>
+      <p>Все данные передаются по HTTPS (шифрование TLS). Пароли хешируются и никогда не хранятся в открытом виде. Доступ к базе данных ограничен и аутентифицирован. Мы следуем стандартным практикам безопасности.</p>
+      <p>Несмотря на наши усилия, ни одна система не является абсолютно безопасной. Если вы обнаружите уязвимость, свяжитесь с нами: <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>Изменения политики</h2>
+      <p>В случае существенных изменений политики мы уведомим вас по email или через приложение до вступления изменений в силу. Дата обновления вверху страницы отражает последнюю редакцию.</p>
+    </div>
+
+    <div class="section">
+      <h2>Контакт</h2>
+      <p>По всем вопросам о политике конфиденциальности или обработке данных пишите на <strong>hello@unspoken.app</strong>.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-text">Тихий проект из Риги.</div>
+    <div class="footer-text">
+      <a href="/">Home</a>
+      <a href="/care_ru.html">Помощь</a>
+      <a href="/terms.html">Условия</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
