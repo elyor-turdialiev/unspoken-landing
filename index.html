@@ -933,7 +933,8 @@
     .whisper-card:nth-child(n) { transform: none; margin-top: 0; }
     footer .wrap { flex-direction: column; align-items: flex-start; }
   }
-    /* ---------- PATCH: avatars, footer, spacing, clickable listening room ---------- */
+
+  /* ---------- PATCH: avatars, footer, spacing, clickable listening room ---------- */
 
   /* Fixed avatar circles — don't shrink per language */
   .lr-avatar {
@@ -1149,7 +1150,7 @@
       <div class="lr-footer-note">
         Conversations are 20 minutes · Always private · Free to start · Tip optional
       </div>
-    </div>
+    </a>
 
     <div class="lr-copy">
       <div class="micro-label">— When writing isn't enough —</div>
@@ -1275,3 +1276,20 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // ---------- Scroll-triggered fade-ins ----------
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+</script>
+
+</body>
+</html>
