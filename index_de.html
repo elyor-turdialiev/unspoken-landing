@@ -933,6 +933,92 @@
     .whisper-card:nth-child(n) { transform: none; margin-top: 0; }
     footer .wrap { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ---------- PATCH: avatars, footer, spacing, clickable listening room ---------- */
+
+  /* Fixed avatar circles — don't shrink per language */
+  .lr-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .lr-bio { padding-left: 52px; }
+
+  /* Consistent section rhythm */
+  :root {
+    --section-y: 90px;
+    --section-y-mobile: 60px;
+  }
+  .hero { padding: calc(var(--section-y) + 30px) 0 var(--section-y); }
+  .whispers,
+  .reflection-preview,
+  .listening-room,
+  .promises { padding: var(--section-y) 0; }
+  .how { padding: calc(var(--section-y) + 20px) 0; margin: 0; }
+  .closing { padding: calc(var(--section-y) + 40px) 0 calc(var(--section-y) + 30px); }
+
+  @media (max-width: 640px) {
+    .hero { padding: calc(var(--section-y-mobile) + 10px) 0 var(--section-y-mobile); }
+    .whispers,
+    .reflection-preview,
+    .listening-room,
+    .promises { padding: var(--section-y-mobile) 0; }
+    .how { padding: calc(var(--section-y-mobile) + 10px) 0; }
+    .closing { padding: calc(var(--section-y-mobile) + 20px) 0 calc(var(--section-y-mobile) + 10px); }
+  }
+
+  /* Footer — cleaner layout */
+  footer { padding: 36px 0 44px; margin-top: 20px; }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 36px;
+  }
+  footer .footer-brand { display: flex; align-items: center; gap: 8px; }
+  footer .footer-brand strong {
+    font-family: var(--serif);
+    font-weight: 500;
+    color: var(--ink);
+  }
+  footer .footer-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  footer a { margin-right: 0; }
+
+  @media (max-width: 640px) {
+    footer .wrap { flex-direction: column; align-items: flex-start; gap: 18px; }
+    footer .footer-links { gap: 18px 20px; }
+  }
+
+  /* Clickable Listening Room card */
+  a.lr-visual-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  a.lr-visual-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 36px 70px -30px rgba(26, 22, 19, 0.25);
+  }
+
+  /* ---------- PATCH 2: tidy listener cards on mobile ---------- */
+  .lr-status { white-space: nowrap; flex-shrink: 0; }
+  @media (max-width: 640px) {
+    .lr-bio { display: none; }
+    .lr-listener { padding: 12px 14px; }
+    .lr-listener-row { margin-bottom: 0; }
+  }
 </style>
 </head>
 <body>
@@ -1035,7 +1121,7 @@
 <!-- LISTENING ROOM (the second pillar) -->
 <section class="listening-room fade-in">
   <div class="wrap">
-    <div class="lr-visual">
+    <a href="https://inner-wordsmith.lovable.app/listening-room" class="lr-visual lr-visual-link">
       <div class="lr-visual-label">— Der Zuhörraum —</div>
       <div class="lr-visual-title">Jemand ist hier,<br>um <em>zuzuhören.</em></div>
 
@@ -1063,7 +1149,7 @@
           </div>
           <div class="lr-status">
             <span class="lr-status-dot"></span>
-            Free now
+            Verfügbar
           </div>
         </div>
         <div class="lr-bio">«Familienthemen, Beziehungen — das, was man zu Hause nicht sagen kann.»</div>
@@ -1072,7 +1158,7 @@
       <div class="lr-footer-note">
         Gespräche dauern 20 Minuten · Immer privat · Kostenlos zum Start · Trinkgeld optional
       </div>
-    </div>
+    </a>
 
     <div class="lr-copy">
       <div class="micro-label">— Wenn Schreiben nicht reicht —</div>
@@ -1176,7 +1262,7 @@
     <p class="section-intro">Keine Warteliste. Keine Einladungen. Öffne einfach die Tür und beginne zu schreiben, was du nicht aussprechen kannst.</p>
 
     <div class="closing-cta-group">
-      <a href="https://inner-wordsmith.lovable.app" class="cta-primary cta-primary-large">Begin quietly</a>
+      <a href="https://inner-wordsmith.lovable.app" class="cta-primary cta-primary-large">Leise beginnen</a>
       <a href="https://inner-wordsmith.lovable.app" class="cta-secondary">Schon ein Konto? Anmelden.</a>
     </div>
     <p class="cta-note">Kostenlos · Privat von Anfang an · Jederzeit gehen</p>
@@ -1186,11 +1272,11 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div>
-      <strong style="font-family: var(--serif); font-weight: 500; color: var(--ink);">unspoken</strong>
-      &nbsp; · &nbsp; Ein stilles Projekt aus Riga, Lettland.
+    <div class="footer-brand">
+      <strong>unspoken</strong>
+      <span>· Ein stilles Projekt aus Riga, Lettland.</span>
     </div>
-    <div>
+    <div class="footer-links">
       <a href="/care_de.html">Musst du mit jemandem reden?</a>
       <a href="mailto:hello@unspoken.app">hello@unspoken.app</a>
       <a href="/privacy_de.html">Datenschutz</a>
