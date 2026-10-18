@@ -1,424 +1,1295 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-  <title>Hilfe — Unspoken</title>
-  <meta name="description" content="Wenn das, was du trägst, zu schwer ist, um es allein zu tragen — bitte greif nach jemandem, der zuhören kann. Krisentelefone und vertrauenswürdige Ressourcen." />
-  <meta name="robots" content="noindex" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<title>Unspoken — Was du nicht aussprechen kannst.</title>
+<meta name="description" content="Ein privater, anonymer Raum, um zu schreiben, was du nicht sagen kannst. Erhalte jede Woche eine literarische Reflexion aus deinen eigenen Worten. Leise beginnen." />
 
-  <!-- Fonts: Fraunces (serif, literary warmth) + Inter Tight (clean sans for UI) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Open Graph / Social -->
+<meta property="og:title" content="Unspoken — The things you can't say out loud." />
+<meta property="og:description" content="Ein privater, anonymer Raum für das, was du in dir trägst. Schreib, was du nicht aussprechen kannst." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://unspoken.app" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Unspoken — The things you can't say out loud." />
+<meta name="twitter:description" content="Ein privater, anonymer Raum für das, was du in dir trägst." />
 
-  <!-- Favicon placeholder (matches landing) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%89%3C/text%3E%3C/svg%3E">
+<!-- Fonts: Fraunces (serif, literary warmth) + Inter Tight (clean sans for UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --ink: #1a1613;
-      --ink-soft: #433a34;
-      --ink-whisper: #7a6f67;
-      --paper: #f5efe6;
-      --paper-warm: #ede4d5;
-      --cream: #faf6ee;
-      --clay: #b85c3c;
-      --clay-soft: #d68a6c;
-      --sage: #6b7a5a;
-      --rule: rgba(26, 22, 19, 0.12);
+<!-- Favicon placeholder (emoji for now, replace when logo is ready) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✉%3C/text%3E%3C/svg%3E">
 
-      --serif: 'Fraunces', 'Georgia', serif;
-      --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+<style>
+  :root {
+    --ink: #1a1613;
+    --ink-soft: #433a34;
+    --ink-whisper: #7a6f67;
+    --paper: #f5efe6;
+    --paper-warm: #ede4d5;
+    --cream: #faf6ee;
+    --clay: #b85c3c;
+    --sage: #6b7a5a;
+    --midnight: #1f2937;
+    --rule: rgba(26, 22, 19, 0.12);
 
-      --max: 760px;
-    }
+    --serif: 'Fraunces', 'Georgia', serif;
+    --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    --max: 1100px;
+  }
 
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.6;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        radial-gradient(1000px 700px at 50% 0%, rgba(184, 92, 60, 0.04), transparent 60%);
-    }
+  html { scroll-behavior: smooth; }
 
-    .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 1;
-    }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-    /* ---------- Top nav ---------- */
-    nav.top {
-      padding: 28px 0 0;
-    }
-    nav.top .wrap {
-      max-width: 1100px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo svg { color: var(--clay); }
+  /* Subtle paper texture via layered gradient noise */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1200px 800px at 10% 0%, rgba(184, 92, 60, 0.05), transparent 60%),
+      radial-gradient(1000px 700px at 90% 100%, rgba(107, 122, 90, 0.05), transparent 60%);
+  }
 
-    .back-link {
-      font-family: var(--sans);
-      font-size: 14px;
-      color: var(--ink-soft);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .back-link:hover { color: var(--clay); }
+  /* ---------- Layout ---------- */
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
 
-    /* ---------- Hero ---------- */
-    header.hero {
-      padding: 80px 0 50px;
-    }
-    .eyebrow {
-      font-family: var(--sans);
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      color: var(--clay);
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 32px;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(38px, 5vw, 60px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--clay);
-      font-weight: 400;
-    }
-    .lede {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(18px, 1.8vw, 21px);
-      line-height: 1.55;
-      color: var(--ink-soft);
-      max-width: 600px;
-    }
-    .lede em {
-      font-style: italic;
-      color: var(--ink);
-    }
+  /* ---------- Nav ---------- */
+  nav.top {
+    padding: 28px 0 0;
+  }
+  nav.top .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-link {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-link:hover { color: var(--clay); }
 
-    /* ---------- Resources ---------- */
-    .resources {
-      padding: 60px 0 40px;
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .nav-signin {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+  .nav-signin:hover { color: var(--clay); }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 9px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    background: var(--clay);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 540px) {
+    .nav-actions { gap: 16px; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 110px 0 80px;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s ease-out forwards;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7.5vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 900px;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.25s ease-out forwards;
+  }
+  h1 em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144;
+    color: var(--clay);
+    font-weight: 400;
+  }
+  .lede {
+    font-family: var(--serif);
+    font-size: clamp(19px, 2.2vw, 23px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 620px;
+    font-weight: 300;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.45s ease-out forwards;
+  }
+
+  /* ---------- Waitlist Form ---------- */
+  .waitlist {
+    max-width: 540px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s ease-out forwards;
+  }
+  .form-row {
+    display: flex;
+    gap: 10px;
+    background: var(--cream);
+    padding: 8px;
+    border-radius: 100px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 2px 24px rgba(26, 22, 19, 0.04);
+  }
+  .form-row input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .form-row input::placeholder {
+    color: var(--ink-whisper);
+  }
+  .form-row button {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+  }
+  .form-row button:hover {
+    background: var(--clay);
+    transform: translateY(-1px);
+  }
+  .form-row button:active { transform: translateY(0); }
+  .form-note {
+    font-size: 13px;
+    color: var(--ink-whisper);
+    margin-top: 16px;
+    padding-left: 20px;
+    letter-spacing: 0.01em;
+  }
+  .form-success {
+    display: none;
+    padding: 22px 26px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .form-success.show { display: block; animation: fadeUp 0.6s ease-out; }
+
+  /* ---------- Hero & Closing CTAs (replaced waitlist forms) ---------- */
+  .hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s ease-out forwards;
+  }
+  .closing-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 16px 32px;
+    border-radius: 100px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 16px rgba(26, 22, 19, 0.08);
+  }
+  .cta-primary:hover {
+    background: var(--clay);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(184, 92, 60, 0.18);
+  }
+  .cta-primary-large {
+    font-size: 17px;
+    padding: 18px 40px;
+  }
+  .cta-secondary {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+  .cta-secondary:hover {
+    color: var(--clay);
+    border-bottom-color: var(--clay-soft, #d68a6c);
+  }
+  .cta-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--ink-whisper);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.85s ease-out forwards;
+  }
+  .closing .cta-note {
+    opacity: 1;
+    animation: none;
+    margin-top: 22px;
+  }
+  @media (max-width: 540px) {
+    .hero-cta-group { gap: 14px; }
+    .cta-primary { padding: 14px 26px; font-size: 14px; }
+    .cta-primary-large { padding: 16px 32px; font-size: 15px; }
+  }
+
+  /* ---------- Divider ornament ---------- */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 60px 0;
+    color: var(--ink-whisper);
+  }
+  .ornament-line {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: var(--rule);
+  }
+  .ornament-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--clay);
+    opacity: 0.6;
+  }
+
+  /* ---------- Whispers section ---------- */
+  .whispers {
+    padding: 60px 0 100px;
+  }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-whisper);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .whisper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 24px;
+  }
+  .whisper-card {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 34px 30px 28px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .whisper-card:nth-child(1) { transform: rotate(-0.6deg); }
+  .whisper-card:nth-child(2) { transform: rotate(0.4deg); margin-top: 16px; }
+  .whisper-card:nth-child(3) { transform: rotate(-0.3deg); }
+  .whisper-card:hover {
+    transform: translateY(-4px) rotate(0deg);
+    box-shadow: 0 20px 40px rgba(26, 22, 19, 0.08);
+  }
+  .whisper-card::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 12px;
+    background: rgba(184, 92, 60, 0.15);
+    border-radius: 2px;
+  }
+  .whisper-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 400;
+    font-style: italic;
+  }
+  .whisper-meta {
+    margin-top: 24px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-whisper);
+  }
+
+  /* ---------- Embedded reflection preview ---------- */
+  .reflection-preview {
+    padding: 100px 0 60px;
+    position: relative;
+  }
+  .reflection-preview .wrap {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .reflection-copy h2 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4.6vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .reflection-copy h2 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .reflection-copy p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    max-width: 480px;
+  }
+  .reflection-copy .micro-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+  }
+  .reflection-copy .reflection-stats {
+    display: flex;
+    gap: 36px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .reflection-copy .reflection-stats .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .reflection-copy .reflection-stats .stat-item .num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--clay);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .reflection-copy .reflection-stats .stat-item .lbl {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-whisper);
+  }
+
+  /* The "letter" itself */
+  .letter {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 40px 38px 36px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.6) inset,
+      0 30px 60px -30px rgba(26, 22, 19, 0.18),
+      0 8px 24px -12px rgba(26, 22, 19, 0.08);
+    position: relative;
+    transform: rotate(-0.5deg);
+    transition: transform 0.4s ease;
+  }
+  .letter:hover { transform: rotate(0deg) translateY(-2px); }
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 14px;
+    background: rgba(184, 92, 60, 0.18);
+    border-radius: 2px;
+  }
+  .letter-header {
+    text-align: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 26px;
+  }
+  .letter-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+  .letter-date {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-whisper);
+  }
+  .letter h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .letter h3 em { font-style: italic; color: var(--clay); }
+  .letter-body {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .letter-body p { margin-bottom: 14px; }
+  .letter-body strong {
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .letter-pullquote {
+    border-left: 2px solid var(--clay);
+    padding: 4px 0 4px 18px;
+    margin: 22px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .letter-footer {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-whisper);
+  }
+
+  @media (max-width: 880px) {
+    .reflection-preview .wrap {
+      grid-template-columns: 1fr;
+      gap: 50px;
     }
-    .group {
-      margin-bottom: 56px;
+    .letter { padding: 32px 26px 28px; transform: none; }
+    .reflection-copy .reflection-stats { gap: 28px; }
+  }
+
+  /* ---------- Listening Room section ---------- */
+  .listening-room {
+    padding: 90px 0 70px;
+    position: relative;
+  }
+  .listening-room .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .lr-visual {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 32px 28px;
+    box-shadow: 0 30px 60px -30px rgba(26, 22, 19, 0.18);
+    position: relative;
+  }
+  .lr-visual-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .lr-visual-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.15;
+    text-align: center;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .lr-visual-title em { font-style: italic; color: var(--clay); }
+
+  .lr-listener {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .lr-listener-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .lr-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--clay);
+    font-size: 14px;
+  }
+  .lr-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .lr-meta {
+    font-size: 11px;
+    color: var(--ink-whisper);
+    letter-spacing: 0.04em;
+  }
+  .lr-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--sage);
+    font-weight: 500;
+  }
+  .lr-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  .lr-bio {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.45;
+    padding-left: 44px;
+  }
+  .lr-footer-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--ink-whisper);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+
+  .lr-copy h2 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4.6vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .lr-copy h2 em { font-style: italic; color: var(--clay); }
+  .lr-copy .micro-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+  }
+  .lr-copy p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    max-width: 480px;
+  }
+  .lr-promises {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 26px;
+  }
+  .lr-promise-item {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .lr-promise-item strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  @media (max-width: 880px) {
+    .listening-room .wrap {
+      grid-template-columns: 1fr;
+      gap: 50px;
     }
-    .group-title {
-      font-family: var(--sans);
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      color: var(--ink-whisper);
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .line {
-      display: flex;
+    .lr-promises { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- How it works ---------- */
+  .how {
+    padding: 120px 0;
+    background: var(--paper-warm);
+    margin: 40px 0;
+    position: relative;
+  }
+  .how::before, .how::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--rule);
+  }
+  .how::before { top: 0; }
+  .how::after { bottom: 0; }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+  .section-title em { font-style: italic; color: var(--clay); }
+  .section-intro {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 72px;
+    line-height: 1.5;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 56px;
+  }
+  .step {
+    position: relative;
+    padding-top: 40px;
+  }
+  .step-num {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--clay);
+    opacity: 0.4;
+    line-height: 1;
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .step-text {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ---------- Promises ---------- */
+  .promises { padding: 100px 0; }
+  .promise-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 48px 40px;
+    margin-top: 48px;
+  }
+  .promise {
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .promise-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .promise-text {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* ---------- Closing CTA ---------- */
+  .closing {
+    padding: 140px 0 120px;
+    text-align: center;
+    position: relative;
+  }
+  .closing .section-title {
+    margin: 0 auto 24px;
+    text-align: center;
+  }
+  .closing .section-intro {
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .closing .waitlist {
+    margin: 0 auto;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 40px 0 48px;
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--ink-whisper);
+    letter-spacing: 0.02em;
+  }
+  footer a {
+    color: var(--ink-whisper);
+    text-decoration: none;
+    margin-right: 24px;
+  }
+  footer a:hover { color: var(--clay); }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll-triggered fade */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 640px) {
+    nav.top { padding: 20px 0 0; }
+    .hero { padding: 70px 0 60px; }
+    .eyebrow { margin-bottom: 24px; }
+    h1 { margin-bottom: 24px; }
+    .lede { margin-bottom: 36px; }
+    .form-row {
       flex-direction: column;
-      gap: 6px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--rule);
+      border-radius: 20px;
+      padding: 10px;
     }
-    .line:last-child { border-bottom: none; }
+    .form-row input { padding: 14px 16px; }
+    .form-row button { padding: 16px 24px; }
+    .how { padding: 80px 0; }
+    .closing { padding: 90px 0 80px; }
+    .whisper-card:nth-child(n) { transform: none; margin-top: 0; }
+    footer .wrap { flex-direction: column; align-items: flex-start; }
+  }
 
-    .line-name {
-      font-family: var(--serif);
-      font-size: 21px;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    .line-name em {
-      font-style: italic;
-      color: var(--ink-soft);
-      font-weight: 300;
-      margin-left: 6px;
-      font-size: 15px;
-    }
-    .line-number {
-      font-family: var(--sans);
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--clay);
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 4px;
-    }
-    .line-number:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-    .line-meta {
-      font-family: var(--sans);
-      font-size: 14px;
-      color: var(--ink-whisper);
-      line-height: 1.55;
-      margin-top: 6px;
-    }
-    .line-meta a {
-      color: var(--ink-soft);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-    }
-    .line-meta a:hover {
-      color: var(--clay);
-      border-color: var(--clay-soft);
-    }
+  /* ---------- PATCH: avatars, footer, spacing, clickable listening room ---------- */
 
-    /* ---------- Reassurance section ---------- */
-    .reassurance {
-      padding: 60px 0;
-      border-top: 1px solid var(--rule);
-      margin-top: 30px;
-    }
-    .reassurance h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(28px, 3vw, 36px);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    .reassurance h2 em {
-      font-style: italic;
-      color: var(--clay);
-    }
-    .reassurance p {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: 19px;
-      line-height: 1.65;
-      color: var(--ink-soft);
-      margin-bottom: 18px;
-    }
-    .reassurance p em {
-      font-style: italic;
-      color: var(--ink);
-    }
+  /* Fixed avatar circles — don't shrink per language */
+  .lr-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .lr-bio { padding-left: 52px; }
 
-    /* ---------- Footer ---------- */
-    footer {
-      padding: 60px 0 40px;
-      border-top: 1px solid var(--rule);
-      margin-top: 40px;
-    }
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-text {
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--ink-whisper);
-      letter-spacing: 0.02em;
-    }
-    .footer-text a {
-      color: var(--ink-soft);
-      text-decoration: none;
-      margin-left: 16px;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 1px;
-    }
-    .footer-text a:hover {
-      color: var(--clay);
-      border-color: var(--clay-soft);
-    }
+  /* Consistent section rhythm */
+  :root {
+    --section-y: 90px;
+    --section-y-mobile: 60px;
+  }
+  .hero { padding: calc(var(--section-y) + 30px) 0 var(--section-y); }
+  .whispers,
+  .reflection-preview,
+  .listening-room,
+  .promises { padding: var(--section-y) 0; }
+  .how { padding: calc(var(--section-y) + 20px) 0; margin: 0; }
+  .closing { padding: calc(var(--section-y) + 40px) 0 calc(var(--section-y) + 30px); }
 
-    @media (max-width: 600px) {
-      header.hero { padding: 56px 0 36px; }
-      .resources { padding: 40px 0 30px; }
-      .reassurance { padding: 44px 0; }
-      .group { margin-bottom: 40px; }
-      .line-number { font-size: 19px; }
-      footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .footer-text a { margin-left: 0; margin-right: 16px; }
-    }
-  </style>
+  @media (max-width: 640px) {
+    .hero { padding: calc(var(--section-y-mobile) + 10px) 0 var(--section-y-mobile); }
+    .whispers,
+    .reflection-preview,
+    .listening-room,
+    .promises { padding: var(--section-y-mobile) 0; }
+    .how { padding: calc(var(--section-y-mobile) + 10px) 0; }
+    .closing { padding: calc(var(--section-y-mobile) + 20px) 0 calc(var(--section-y-mobile) + 10px); }
+  }
+
+  /* Footer — cleaner layout */
+  footer { padding: 36px 0 44px; margin-top: 20px; }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 36px;
+  }
+  footer .footer-brand { display: flex; align-items: center; gap: 8px; }
+  footer .footer-brand strong {
+    font-family: var(--serif);
+    font-weight: 500;
+    color: var(--ink);
+  }
+  footer .footer-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  footer a { margin-right: 0; }
+
+  @media (max-width: 640px) {
+    footer .wrap { flex-direction: column; align-items: flex-start; gap: 18px; }
+    footer .footer-links { gap: 18px 20px; }
+  }
+
+  /* Clickable Listening Room card */
+  a.lr-visual-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  a.lr-visual-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 36px 70px -30px rgba(26, 22, 19, 0.25);
+  }
+</style>
 </head>
 <body>
 
-<!-- TOP NAV -->
 <nav class="top">
   <div class="wrap">
-    <a href="/" class="logo" aria-label="Unspoken home">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="5" width="18" height="14" rx="2"/>
-        <path d="M3 7l9 6 9-6"/>
-      </svg>
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7L12 13L21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7Z" stroke="#1a1613" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M3 7L12 13L21 7" stroke="#b85c3c" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </span>
       unspoken
     </a>
-    <a href="/" class="back-link">Startseite</a>
+    <span style="font-size:12px; letter-spacing:0.06em; color:#7a6f67;"><a href="index.html" style="color:#7a6f67; text-decoration:none;">EN</a> · <a href="index_ru.html" style="color:#7a6f67; text-decoration:none;">RU</a> · <a href="index_es.html" style="color:#7a6f67; text-decoration:none;">ES</a></span>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
+<section class="hero">
   <div class="wrap">
-    <div class="eyebrow">Hilfe · Wenn Schreiben nicht reicht</div>
-    <h1>Wenn das, was du trägst, sich <em>zu schwer</em> anfühlt, um es allein zu halten — bitte greif nach jemandem, der zuhören kann.</h1>
+    <div class="eyebrow">Gefühle brauchen Worte • Ein stiller Ort im Internet</div>
+    <h1>Schreib, was du <em>nicht aussprechen</em> kannst.</h1>
     <p class="lede">
-      Unspoken ist ein stiller Ort zum Schreiben. Es ist <em>kein</em> Ersatz für menschliche Hilfe in einer Krise. Wenn du in Gefahr bist, in Verzweiflung, oder einfach eine echte Stimme am anderen Ende der Leitung brauchst — die Menschen unten sind geschult, kostenlos und warten.
+      Ein stiller, privater Ort nur für dich — für die Schwere, die du nicht teilen kannst, und die Freude, die sich nicht in Worte fassen lässt. Eine wöchentliche Reflexion aus deinen eigenen Worten. Und wenn Schreiben nicht reicht — ein Gespräch mit einem echten, geschulten, anonymen Zuhörer.
     </p>
-  </div>
-</header>
 
-<!-- RESOURCES -->
-<section class="resources">
-  <div class="wrap">
-
-    <!-- LATVIA -->
-    <div class="group">
-      <div class="group-title">Lettland</div>
-
-      <div class="line">
-        <div class="line-name">Skalbes <em>— Krisentelefon, 24/7</em></div>
-        <a href="tel:116123" class="line-number">116 123</a>
-        <div class="line-meta">
-          Kostenlos, anonym, 24 Stunden. Beratung auf Lettisch, Russisch und Englisch. <a href="https://www.skalbes.lv/en/" target="_blank" rel="noopener">skalbes.lv</a>
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Skalbes <em>— Direktleitung</em></div>
-        <a href="tel:+37167222922" class="line-number">+371 67 222 922</a>
-        <div class="line-meta">Gleicher Dienst, vollständige internationale Nummer. Auch: +371 27 722 292.</div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Kinder- und Jugendtelefon <em>— unter 18</em></div>
-        <a href="tel:116111" class="line-number">116 111</a>
-        <div class="line-meta">
-          Kostenlos, 24/7. Online-Chat Mo–Fr 12:00–20:00. <a href="https://uzticibastalrunis.lv" target="_blank" rel="noopener">uzticibastalrunis.lv</a>
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Opferhilfe <em>— wenn dir Gewalt angetan wurde</em></div>
-        <a href="tel:116006" class="line-number">116 006</a>
-        <div class="line-meta">Für Überlebende von Gewalt, Missbrauch oder Verbrechen. Täglich 12:00–22:00.</div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Notruf <em>— unmittelbare Gefahr</em></div>
-        <a href="tel:112" class="line-number">112</a>
-        <div class="line-meta">Polizei, Rettungsdienst, Feuerwehr. Jedes EU-Land, jede Sprache.</div>
-      </div>
+    <div class="hero-cta-group">
+      <a href="https://inner-wordsmith.lovable.app" class="cta-primary">Leise beginnen</a>
+      <a href="https://inner-wordsmith.lovable.app" class="cta-secondary">Oder anmelden</a>
     </div>
-
-    <!-- EUROPE -->
-    <div class="group">
-      <div class="group-title">In ganz Europa</div>
-
-      <div class="line">
-        <div class="line-name">Europäische Telefonseelsorge</div>
-        <a href="tel:116123" class="line-number">116 123</a>
-        <div class="line-meta">Eine kostenlose, harmonisierte Nummer, die in den meisten EU-Ländern anerkannt ist. Verbindet mit dem lokalen Krisendienst.</div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Europäischer Notruf</div>
-        <a href="tel:112" class="line-number">112</a>
-        <div class="line-meta">Für jeden lebensbedrohlichen Notfall, überall in Europa.</div>
-      </div>
-    </div>
-
-    <!-- INTERNATIONAL -->
-    <div class="group">
-      <div class="group-title">International</div>
-
-      <div class="line">
-        <div class="line-name">Find A Helpline <em>— Verzeichnis nach Land</em></div>
-        <div class="line-meta" style="margin-top: 8px;">
-          Ein geprüftes globales Verzeichnis von Krisentelefonen, nach Land und Thema. <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="line-name">Befrienders Worldwide</div>
-        <div class="line-meta" style="margin-top: 8px;">
-          Ein Netzwerk von emotionalen Unterstützungszentren in über 30 Ländern. <a href="https://www.befrienders.org" target="_blank" rel="noopener">befrienders.org</a>
-        </div>
-      </div>
-    </div>
-
+    <p class="cta-note">Kostenlos. Privat von Anfang an. Niemand liest, was du schreibst, außer du.</p>
   </div>
 </section>
 
-<!-- REASSURANCE -->
-<section class="reassurance">
+<!-- WHISPERS (social proof via example entries) -->
+<section class="whispers fade-in">
   <div class="wrap">
-    <h2>Was du hier schreibst, bleibt <em>hier.</em></h2>
-    <p>
-      Nichts, was du in Unspoken schreibst, wird geteilt, verkauft oder von jemand anderem als dir gelesen. Wir überwachen keine Einträge. Wir haben keine Panikerkennung. Das ist Absicht — Unspoken ist ein privater Schreibraum, kein Sicherheitssystem.
+    <div class="section-label">— Einige Dinge, die Menschen in sich tragen —</div>
+    <div class="whisper-grid">
+      <div class="whisper-card">
+        <p class="whisper-text">«Ich tue so lange so, als wäre alles in Ordnung, dass ich vergessen habe, wie sich in Ordnung wirklich anfühlt.»</p>
+        <div class="whisper-meta">Anonym · Erleichtert</div>
+      </div>
+      <div class="whisper-card">
+        <p class="whisper-text">«An den Vater, den ich nie kennengelernt habe: Ich habe ein Leben aufgebaut, auf das du stolz gewesen wärst. Hoffe ich.»</p>
+        <div class="whisper-meta">Anonym · Ein ungesendeter Brief</div>
+      </div>
+      <div class="whisper-card">
+        <p class="whisper-text">«Ich habe dieses Jahr siebenhundert Mal in meinem Kopf gekündigt. Morgen mache ich es wirklich.»</p>
+        <div class="whisper-meta">Anonym · Hoffnungsvoll</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION PREVIEW (the heart of the pitch) -->
+<section class="reflection-preview fade-in">
+  <div class="wrap">
+    <div class="reflection-copy">
+      <div class="micro-label">— Was du zurückbekommst —</div>
+      <h2>Die erste App, die dich dir selbst <em>vorliest.</em></h2>
+      <p>Die meisten Apps geben dir ein Diagramm. Wir geben dir einen Brief.</p>
+      <p>Jeden Sonntag nimmt Unspoken alles, was du diese Woche geschrieben hast, und schreibt es dir zurück — behutsam, literarisch, in deinen eigenen Worten. Keine Therapie. Kein Stimmungswert. Ein Spiegel.</p>
+      <p>Du wirst Dinge in deiner Woche sehen, die du nicht sehen konntest, während du sie gelebt hast. Das Wort, zu dem du immer wieder zurückkehrtest. Der Satz, der mehr bedeutete, als du wusstest. Die Form dessen, was du wirklich gefühlt hast.</p>
+      <div class="reflection-stats">
+        <div class="stat-item">
+          <div class="num">1</div>
+          <div class="lbl">Brief pro Woche</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">∞</div>
+          <div class="lbl">Wörter, die du schreiben kannst</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">0</div>
+          <div class="lbl">Dinge, die ohne dich geteilt werden</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter">
+      <div class="letter-header">
+        <div class="letter-eyebrow">— Eine echte Reflexion —</div>
+        <div class="letter-date">20. Juli — 26. Juli</div>
+      </div>
+      <h3>Eine Woche, gehalten in einem <em>sehr aufgeregten</em> Moment.</h3>
+      <div class="letter-body">
+        <p>Du hast zehn Wörter geschrieben, und sieben davon handelten von anderen Menschen. Dieses Verhältnis sagt schon für sich allein etwas aus.</p>
+        <p>Die Stimmung, die du gewählt hast, war <strong>dankbar</strong>, aber die Worte, die du verwendet hast, waren <em>sehr aufgeregt</em> — zwischen diesen beiden Gefühlen liegt ein Unterschied, und du bist in beiden gelandet. Dankbarkeit kann still sein, aber Aufregung bewegt sich. Sie reicht nach außen.</p>
+        <div class="letter-pullquote">«Ich bin sehr aufgeregt wegen der Menschen, die ich um mich habe»</div>
+        <p>Ein Eintrag in dieser Woche, und es war Freitag — mitten in allem, nicht am Ende, zurückblickend. Du hast aus dem Gefühl selbst heraus geschrieben.</p>
+      </div>
+      <div class="letter-footer">— Eine echte Reflexion, leicht anonymisiert · Deine wird von deiner Woche handeln —</div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTENING ROOM (the second pillar) -->
+<section class="listening-room fade-in">
+  <div class="wrap">
+    <a href="https://inner-wordsmith.lovable.app/listening-room" class="lr-visual lr-visual-link">
+      <div class="lr-visual-label">— Der Zuhörraum —</div>
+      <div class="lr-visual-title">Jemand ist hier,<br>um <em>zuzuhören.</em></div>
+
+      <div class="lr-listener">
+        <div class="lr-listener-row">
+          <div class="lr-avatar">M</div>
+          <div>
+            <div class="lr-name">Maris</div>
+            <div class="lr-meta">Psychologiestudent · 2 Jahre Erfahrung</div>
+          </div>
+          <div class="lr-status">
+            <span class="lr-status-dot"></span>
+            Verfügbar
+          </div>
+        </div>
+        <div class="lr-bio">«Ich bin am besten bei Wochen, die schwerer sind, als sie sein sollten.»</div>
+      </div>
+
+      <div class="lr-listener">
+        <div class="lr-listener-row">
+          <div class="lr-avatar">A</div>
+          <div>
+            <div class="lr-name">Anna</div>
+            <div class="lr-meta">Lizenzierte Beraterin · 8 Jahre Praxis</div>
+          </div>
+          <div class="lr-status">
+            <span class="lr-status-dot"></span>
+            Free now
+          </div>
+        </div>
+        <div class="lr-bio">«Familienthemen, Beziehungen — das, was man zu Hause nicht sagen kann.»</div>
+      </div>
+
+      <div class="lr-footer-note">
+        Gespräche dauern 20 Minuten · Immer privat · Kostenlos zum Start · Trinkgeld optional
+      </div>
+    </a>
+
+    <div class="lr-copy">
+      <div class="micro-label">— Wenn Schreiben nicht reicht —</div>
+      <h2>Manchmal braucht man einen <em>echten Menschen</em> auf der anderen Seite.</h2>
+      <p>Für die Momente, in denen Schreiben nicht reicht, ist der Zuhörraum geöffnet.</p>
+      <p>Echte, geschulte, anonyme Zuhörer — Psychologiestudenten, ehrenamtliche Berater, lizenzierte Fachleute — bereit zum Gespräch. Kostenlos zum Start. Nur Spenden, nie verpflichtend.</p>
+      <p>Du bleibst anonym. Sie sind echt, überprüft und still für die nächsten zwanzig Minuten für dich da.</p>
+
+      <div class="lr-promises">
+        <div class="lr-promise-item">
+          <strong>Immer geschult.</strong>
+          Nie zufällige Fremde. Nie Bots.
+        </div>
+        <div class="lr-promise-item">
+          <strong>Immer anonym.</strong>
+          Du gibst nur das, was du möchtest.
+        </div>
+        <div class="lr-promise-item">
+          <strong>Immer kostenlos zum Start.</strong>
+          Trinkgeld danach, wenn es geholfen hat.
+        </div>
+        <div class="lr-promise-item">
+          <strong>Immer still.</strong>
+          Keine Benachrichtigungen. Kein Druck. Keine Aufzeichnung.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how fade-in">
+  <div class="wrap">
+    <h2 class="section-title">Vier Schritte. Ohne <em>Umwege.</em></h2>
+    <p class="section-intro">
+      Unspoken ist kein soziales Netzwerk. Es gibt keine Profile, keine Likes, keine Follower. Nur du, die Seite, ein echter Mensch, wenn du einen brauchst, und eine stille Reflexion am Ende der Woche.
     </p>
-    <p>
-      <em>Deshalb gibt es diese Seite.</em> Wenn das, was du heute Nacht trägst, mehr braucht, als Papier halten kann — bitte nutze eine der Nummern oben. Sie wurden dafür geschaffen. Sie sind still, kostenlos und werden dich nicht verurteilen.
-    </p>
-    <p>
-      Du bist nicht allein, auch wenn es sich so anfühlt.
-    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Öffne und schreib</h3>
+        <p class="step-text">Kein Konto nötig. Einfach anfangen. Deine Worte bleiben auf deinem Gerät, bis du es anders entscheidest.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Behalten, loslassen oder teilen</h3>
+        <p class="step-text">Privat speichern. Für immer löschen. Oder anonym teilen, damit jemand, der es braucht, es lesen kann.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Sprich mit einem echten Zuhörer</h3>
+        <p class="step-text">Wenn Schreiben nicht reicht, öffnet sich der Zuhörraum. Zwanzig Minuten mit einem geschulten, anonymen Menschen. Kostenlos zum Start.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Erhalte deine wöchentliche Reflexion</h3>
+        <p class="step-text">Jeden Sonntag ein Brief, der dir aus deinen eigenen Worten zurückgeschrieben wird. Kein Stimmungsdiagramm. Ein Spiegel — behutsam, literarisch und deiner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISES -->
+<section class="promises fade-in">
+  <div class="wrap">
+    <h2 class="section-title">Was wir <em>niemals</em> tun werden.</h2>
+    <p class="section-intro">Einige Versprechen, die wir schriftlich festhalten, bevor wir eine einzige Funktion veröffentlichen.</p>
+    <div class="promise-list">
+      <div class="promise">
+        <h4 class="promise-title">Keine Werbung</h4>
+        <p class="promise-text">Deine ehrlichsten Worte sollten nicht von jemandem unterbrochen werden, der versucht, dir eine Matratze zu verkaufen.</p>
+      </div>
+      <div class="promise">
+        <h4 class="promise-title">Keine Daten verkauft</h4>
+        <p class="promise-text">Nicht an Werbekunden. An niemanden. Nicht jetzt, nicht jemals. Das steht in der Unternehmenssatzung.</p>
+      </div>
+      <div class="promise">
+        <h4 class="promise-title">Keine KI, die vorgibt, du zu sein</h4>
+        <p class="promise-text">Echtes menschliches Schreiben von echten Menschen. Keine generierten Geständnisse. Keine falsche Empathie.</p>
+      </div>
+      <div class="promise">
+        <h4 class="promise-title">Keine Profile, keine Follower</h4>
+        <p class="promise-text">Anonymität ist hier kein Feature. Sie ist der ganze Sinn. Es gibt nichts aufzuführen.</p>
+      </div>
+      <div class="promise">
+        <h4 class="promise-title">Privat von Anfang an</h4>
+        <p class="promise-text">Nichts, was du schreibst, wird geteilt, es sei denn, du entscheidest dich aktiv dafür. Das meiste sollte es nicht.</p>
+      </div>
+      <div class="promise">
+        <h4 class="promise-title">Ein Teil zurückgegeben</h4>
+        <p class="promise-text">1% von jedem Euro, den wir verdienen, wird an Organisationen für psychische Gesundheit in den Ländern gespendet, in denen wir tätig sind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="closing fade-in" id="begin">
+  <div class="wrap">
+    <h2 class="section-title">Wenn du <em>bereit</em> bist.</h2>
+    <p class="section-intro">Keine Warteliste. Keine Einladungen. Öffne einfach die Tür und beginne zu schreiben, was du nicht aussprechen kannst.</p>
+
+    <div class="closing-cta-group">
+      <a href="https://inner-wordsmith.lovable.app" class="cta-primary cta-primary-large">Begin quietly</a>
+      <a href="https://inner-wordsmith.lovable.app" class="cta-secondary">Schon ein Konto? Anmelden.</a>
+    </div>
+    <p class="cta-note">Kostenlos · Privat von Anfang an · Jederzeit gehen</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="footer-text">Ein stilles Projekt aus Riga.</div>
-    <div class="footer-text">
-      <a href="/">Startseite</a>
-      <a href="/care_de.html">Care</a>
+    <div class="footer-brand">
+      <strong>unspoken</strong>
+      <span>· Ein stilles Projekt aus Riga, Lettland.</span>
+    </div>
+    <div class="footer-links">
+      <a href="/care_de.html">Musst du mit jemandem reden?</a>
+      <a href="mailto:hello@unspoken.app">hello@unspoken.app</a>
+      <a href="/privacy_de.html">Datenschutz</a>
+      <a href="/terms_de.html">Nutzungsbedingungen</a>
     </div>
   </div>
 </footer>
+
+<script>
+  // ---------- Scroll-triggered fade-ins ----------
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+</script>
 
 </body>
 </html>
