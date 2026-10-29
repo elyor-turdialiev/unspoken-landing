@@ -1019,6 +1019,9 @@
     .lr-listener { padding: 12px 14px; }
     .lr-listener-row { margin-bottom: 0; }
   }
+  /* PATCH 3: 4 steps in one row */
+  @media (min-width:1000px){.steps{grid-template-columns:repeat(4,1fr);gap:40px}}
+  @media (min-width:640px) and (max-width:999px){.steps{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -1044,7 +1047,7 @@
     <div class="eyebrow">Gefühle brauchen Worte • Ein stiller Ort im Internet</div>
     <h1>Schreib, was du <em>nicht aussprechen</em> kannst.</h1>
     <p class="lede">
-      Ein stiller, privater Ort nur für dich — für die Schwere, die du nicht teilen kannst, und die Freude, die sich nicht in Worte fassen lässt. Eine wöchentliche Reflexion aus deinen eigenen Worten. Und wenn Schreiben nicht reicht — ein Gespräch mit einem echten, geschulten, anonymen Zuhörer.
+      Ein stiller, privater Ort nur für dich — für die Schwere, die du nicht teilen kannst, und die Freude, die sich nicht in Worte fassen lässt. Eine wöchentliche Reflexion aus deinen eigenen Worten. Und wenn Schreiben nicht reicht — ein Gespräch mit einem echten Menschen.
     </p>
 
     <div class="hero-cta-group">
@@ -1062,15 +1065,15 @@
     <div class="whisper-grid">
       <div class="whisper-card">
         <p class="whisper-text">«Ich tue so lange so, als wäre alles in Ordnung, dass ich vergessen habe, wie sich in Ordnung wirklich anfühlt.»</p>
-        <div class="whisper-meta">Anonym · Erleichtert</div>
+        <div class="whisper-meta">Beispiel · Erleichtert</div>
       </div>
       <div class="whisper-card">
         <p class="whisper-text">«An den Vater, den ich nie kennengelernt habe: Ich habe ein Leben aufgebaut, auf das du stolz gewesen wärst. Hoffe ich.»</p>
-        <div class="whisper-meta">Anonym · Ein ungesendeter Brief</div>
+        <div class="whisper-meta">Beispiel · Ein ungesendeter Brief</div>
       </div>
       <div class="whisper-card">
         <p class="whisper-text">«Ich habe dieses Jahr siebenhundert Mal in meinem Kopf gekündigt. Morgen mache ich es wirklich.»</p>
-        <div class="whisper-meta">Anonym · Hoffnungsvoll</div>
+        <div class="whisper-meta">Beispiel · Hoffnungsvoll</div>
       </div>
     </div>
   </div>
@@ -1083,7 +1086,7 @@
       <div class="micro-label">— Was du zurückbekommst —</div>
       <h2>Die erste App, die dich dir selbst <em>vorliest.</em></h2>
       <p>Die meisten Apps geben dir ein Diagramm. Wir geben dir einen Brief.</p>
-      <p>Jeden Sonntag nimmt Unspoken alles, was du diese Woche geschrieben hast, und schreibt es dir zurück — behutsam, literarisch, in deinen eigenen Worten. Keine Therapie. Kein Stimmungswert. Ein Spiegel.</p>
+      <p>Jeden Sonntag nimmt Unspoken alles, was du diese Woche geschrieben und gezeichnet hast, und schreibt es dir zurück — behutsam, literarisch, in deinen eigenen Worten. Keine Therapie. Kein Stimmungswert. Ein Spiegel.</p>
       <p>Du wirst Dinge in deiner Woche sehen, die du nicht sehen konntest, während du sie gelebt hast. Das Wort, zu dem du immer wieder zurückkehrtest. Der Satz, der mehr bedeutete, als du wusstest. Die Form dessen, was du wirklich gefühlt hast.</p>
       <div class="reflection-stats">
         <div class="stat-item">
@@ -1127,36 +1130,17 @@
 
       <div class="lr-listener">
         <div class="lr-listener-row">
-          <div class="lr-avatar">M</div>
+          <div class="lr-avatar">E</div>
           <div>
-            <div class="lr-name">Maris</div>
-            <div class="lr-meta">Psychologiestudent · 2 Jahre Erfahrung</div>
-          </div>
-          <div class="lr-status">
-            <span class="lr-status-dot"></span>
-            Verfügbar
+            <div class="lr-name">Elio</div>
+            <div class="lr-meta">Gründer von Unspoken · Pilot-Zuhörer</div>
           </div>
         </div>
-        <div class="lr-bio">«Ich bin am besten bei Wochen, die schwerer sind, als sie sein sollten.»</div>
-      </div>
-
-      <div class="lr-listener">
-        <div class="lr-listener-row">
-          <div class="lr-avatar">A</div>
-          <div>
-            <div class="lr-name">Anna</div>
-            <div class="lr-meta">Lizenzierte Beraterin · 8 Jahre Praxis</div>
-          </div>
-          <div class="lr-status">
-            <span class="lr-status-dot"></span>
-            Verfügbar
-          </div>
-        </div>
-        <div class="lr-bio">«Familienthemen, Beziehungen — das, was man zu Hause nicht sagen kann.»</div>
+        <div class="lr-bio">«Für die Wochen, die schwerer sind, als sie sein sollten.»</div>
       </div>
 
       <div class="lr-footer-note">
-        Gespräche dauern 20 Minuten · Immer privat · Kostenlos zum Start · Trinkgeld optional
+        Während der Pilotphase · Begrenzte Zeiten · 20 Minuten · Immer privat · Kostenlos
       </div>
     </a>
 
@@ -1164,21 +1148,21 @@
       <div class="micro-label">— Wenn Schreiben nicht reicht —</div>
       <h2>Manchmal braucht man einen <em>echten Menschen</em> auf der anderen Seite.</h2>
       <p>Für die Momente, in denen Schreiben nicht reicht, ist der Zuhörraum geöffnet.</p>
-      <p>Echte, geschulte, anonyme Zuhörer — Psychologiestudenten, ehrenamtliche Berater, lizenzierte Fachleute — bereit zum Gespräch. Kostenlos zum Start. Nur Spenden, nie verpflichtend.</p>
-      <p>Du bleibst anonym. Sie sind echt, überprüft und still für die nächsten zwanzig Minuten für dich da.</p>
+      <p>In der Pilotphase hört dir der Gründer von Unspoken zu. Wenn Unspoken wächst, kommen geschulte Zuhörer und Psychologen dazu.</p>
+      <p>Du bleibst anonym. Auf der anderen Seite ist ein echter Mensch, der zwanzig Minuten still für dich da ist.</p>
 
       <div class="lr-promises">
         <div class="lr-promise-item">
-          <strong>Immer geschult.</strong>
-          Nie zufällige Fremde. Nie Bots.
+          <strong>Immer menschlich.</strong>
+          Nie Bots. Nie Skripte.
         </div>
         <div class="lr-promise-item">
           <strong>Immer anonym.</strong>
           Du gibst nur das, was du möchtest.
         </div>
         <div class="lr-promise-item">
-          <strong>Immer kostenlos zum Start.</strong>
-          Trinkgeld danach, wenn es geholfen hat.
+          <strong>Kostenlos in der Pilotphase.</strong>
+          Keine Zahlung, keine Karte.
         </div>
         <div class="lr-promise-item">
           <strong>Immer still.</strong>
@@ -1199,23 +1183,23 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3 class="step-title">Öffne und schreib</h3>
-        <p class="step-text">Kein Konto nötig. Einfach anfangen. Deine Worte bleiben auf deinem Gerät, bis du es anders entscheidest.</p>
+        <h3 class="step-title">Schreib, zeichne oder sprich</h3>
+        <p class="step-text">Erstelle ein kostenloses Konto, nur mit E-Mail. Tippe, skizziere oder nutze deine Stimme. Niemand liest es außer dir.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3 class="step-title">Behalten, loslassen oder teilen</h3>
-        <p class="step-text">Privat speichern. Für immer löschen. Oder anonym teilen, damit jemand, der es braucht, es lesen kann.</p>
+        <h3 class="step-title">Spiegle eine Zeichnung</h3>
+        <p class="step-text">Unsicher, was du gezeichnet hast? Tippe auf Spiegeln für eine kurze, behutsame Lesart deiner Striche. Nie eine Diagnose.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3 class="step-title">Sprich mit einem echten Zuhörer</h3>
-        <p class="step-text">Wenn Schreiben nicht reicht, öffnet sich der Zuhörraum. Zwanzig Minuten mit einem geschulten, anonymen Menschen. Kostenlos zum Start.</p>
+        <h3 class="step-title">Sprich mit einem echten Menschen</h3>
+        <p class="step-text">Wenn Schreiben nicht reicht, öffnet sich der Zuhörraum. Zwanzig stille Minuten mit einem Menschen.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <h3 class="step-title">Erhalte deine wöchentliche Reflexion</h3>
-        <p class="step-text">Jeden Sonntag ein Brief, der dir aus deinen eigenen Worten zurückgeschrieben wird. Kein Stimmungsdiagramm. Ein Spiegel — behutsam, literarisch und deiner.</p>
+        <h3 class="step-title">Erhalte deinen Wochenbrief</h3>
+        <p class="step-text">Jeden Sonntag ein Brief, aus deinen eigenen Worten und Zeichnungen zurückgeschrieben. Kein Stimmungsdiagramm. Ein Spiegel.</p>
       </div>
     </div>
   </div>
@@ -1233,23 +1217,19 @@
       </div>
       <div class="promise">
         <h4 class="promise-title">Keine Daten verkauft</h4>
-        <p class="promise-text">Nicht an Werbekunden. An niemanden. Nicht jetzt, nicht jemals. Das steht in der Unternehmenssatzung.</p>
+        <p class="promise-text">Nicht an Werbekunden. An niemanden. Nicht jetzt, nicht jemals.</p>
       </div>
       <div class="promise">
-        <h4 class="promise-title">Keine KI, die vorgibt, du zu sein</h4>
-        <p class="promise-text">Echtes menschliches Schreiben von echten Menschen. Keine generierten Geständnisse. Keine falsche Empathie.</p>
+        <h4 class="promise-title">KI, die spiegelt, nie vorgibt</h4>
+        <p class="promise-text">KI hilft, deinen Wochenbrief zu schreiben und deine Zeichnungen zu spiegeln – nur aus deinen eigenen Worten und Strichen. Sie schreibt nie für dich, stellt keine Diagnosen und gibt nie vor, ein Mensch zu sein.</p>
       </div>
       <div class="promise">
         <h4 class="promise-title">Keine Profile, keine Follower</h4>
         <p class="promise-text">Anonymität ist hier kein Feature. Sie ist der ganze Sinn. Es gibt nichts aufzuführen.</p>
       </div>
       <div class="promise">
-        <h4 class="promise-title">Privat von Anfang an</h4>
-        <p class="promise-text">Nichts, was du schreibst, wird geteilt, es sei denn, du entscheidest dich aktiv dafür. Das meiste sollte es nicht.</p>
-      </div>
-      <div class="promise">
-        <h4 class="promise-title">Ein Teil zurückgegeben</h4>
-        <p class="promise-text">1% von jedem Euro, den wir verdienen, wird an Organisationen für psychische Gesundheit in den Ländern gespendet, in denen wir tätig sind.</p>
+        <h4 class="promise-title">Immer privat</h4>
+        <p class="promise-text">Nichts, was du schreibst, wird je geteilt. Diese Funktion gibt es nicht.</p>
       </div>
     </div>
   </div>

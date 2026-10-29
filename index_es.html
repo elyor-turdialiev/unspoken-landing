@@ -1019,6 +1019,9 @@
     .lr-listener { padding: 12px 14px; }
     .lr-listener-row { margin-bottom: 0; }
   }
+  /* PATCH 3: 4 steps in one row */
+  @media (min-width:1000px){.steps{grid-template-columns:repeat(4,1fr);gap:40px}}
+  @media (min-width:640px) and (max-width:999px){.steps{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -1044,7 +1047,7 @@
     <div class="eyebrow">Los sentimientos necesitan palabras • Un lugar tranquilo en internet</div>
     <h1>Escribe lo que <em>no puedes</em> decir en voz alta.</h1>
     <p class="lede">
-      Un lugar tranquilo, privado, solo tuyo, para lo que llevas dentro — el peso que no puedes compartir y la alegría demasiado brillante para explicar. Una reflexión semanal escrita con tus propias palabras. Y cuando escribir no alcanza — una conversación con un oyente real, capacitado y anónimo.
+      Un lugar tranquilo, privado, solo tuyo, para lo que llevas dentro — el peso que no puedes compartir y la alegría demasiado brillante para explicar. Una reflexión semanal escrita con tus propias palabras. Y cuando escribir no alcanza — una conversación con una persona real.
     </p>
 
     <div class="hero-cta-group">
@@ -1062,15 +1065,15 @@
     <div class="whisper-grid">
       <div class="whisper-card">
         <p class="whisper-text">«Llevo tanto tiempo fingiendo que estoy bien que olvidé cómo se siente estar bien de verdad.»</p>
-        <div class="whisper-meta">Anónimo · Aliviado</div>
+        <div class="whisper-meta">Ejemplo · Aliviado</div>
       </div>
       <div class="whisper-card">
         <p class="whisper-text">«Al padre que nunca conocí: construí una vida de la que estarías orgulloso. Eso espero.»</p>
-        <div class="whisper-meta">Anónimo · Carta sin enviar</div>
+        <div class="whisper-meta">Ejemplo · Carta sin enviar</div>
       </div>
       <div class="whisper-card">
         <p class="whisper-text">«Renuncié a mi trabajo en mi cabeza setecientas veces este año. Mañana lo haré de verdad.»</p>
-        <div class="whisper-meta">Anónimo · Esperanzado</div>
+        <div class="whisper-meta">Ejemplo · Esperanzado</div>
       </div>
     </div>
   </div>
@@ -1083,7 +1086,7 @@
       <div class="micro-label">— Lo que recibes a cambio —</div>
       <h2>La primera app que te <em>lee de vuelta</em> a ti mismo.</h2>
       <p>La mayoría de las apps te dan un gráfico. Nosotros te damos una carta.</p>
-      <p>Cada domingo, Unspoken toma todo lo que escribiste esa semana y te lo devuelve — con delicadeza, literariamente, con tus propias palabras. No es terapia. No es una puntuación de ánimo. Es un espejo.</p>
+      <p>Cada domingo, Unspoken toma todo lo que escribiste y dibujaste esa semana y te lo devuelve — con delicadeza, literariamente, con tus propias palabras. No es terapia. No es una puntuación de ánimo. Es un espejo.</p>
       <p>Verás cosas en tu semana que no podías ver mientras la vivías. La palabra a la que volvías una y otra vez. La frase que importaba más de lo que creías. La forma de lo que realmente sentías.</p>
       <div class="reflection-stats">
         <div class="stat-item">
@@ -1127,36 +1130,17 @@
 
       <div class="lr-listener">
         <div class="lr-listener-row">
-          <div class="lr-avatar">M</div>
+          <div class="lr-avatar">E</div>
           <div>
-            <div class="lr-name">Maris</div>
-            <div class="lr-meta">Estudiante de psicología · 2 años de experiencia</div>
-          </div>
-          <div class="lr-status">
-            <span class="lr-status-dot"></span>
-            Disponible
+            <div class="lr-name">Elio</div>
+            <div class="lr-meta">Fundador de Unspoken · Oyente del piloto</div>
           </div>
         </div>
-        <div class="lr-bio">«Se me dan mejor las semanas que pesan más de lo que deberían.»</div>
-      </div>
-
-      <div class="lr-listener">
-        <div class="lr-listener-row">
-          <div class="lr-avatar">A</div>
-          <div>
-            <div class="lr-name">Anna</div>
-            <div class="lr-meta">Consejera licenciada · 8 años de práctica</div>
-          </div>
-          <div class="lr-status">
-            <span class="lr-status-dot"></span>
-            Disponible
-          </div>
-        </div>
-        <div class="lr-bio">«Temas de familia, relaciones — lo que no puedes decir en casa.»</div>
+        <div class="lr-bio">«Para las semanas que pesan más de lo que deberían.»</div>
       </div>
 
       <div class="lr-footer-note">
-        Conversaciones de 20 minutos · Siempre privado · Gratis para empezar · Propina opcional
+        Durante el piloto · Horario limitado · 20 minutos · Siempre privado · Gratis
       </div>
     </a>
 
@@ -1164,21 +1148,21 @@
       <div class="micro-label">— Cuando escribir no alcanza —</div>
       <h2>A veces necesitas una <em>persona real</em> al otro lado.</h2>
       <p>Para los momentos en que escribir no alcanza, la Sala de Escucha está abierta.</p>
-      <p>Oyentes reales, capacitados y anónimos — estudiantes de psicología, consejeros voluntarios, profesionales licenciados — disponibles para hablar. Gratis para empezar. Solo donaciones, nunca obligatorias.</p>
-      <p>Tú permaneces anónimo. Ellos son reales, verificados y silenciosamente dedicados a ti durante los próximos veinte minutos.</p>
+      <p>Durante el piloto, quien escucha es el fundador de Unspoken. A medida que crezcamos, se unirán oyentes capacitados y psicólogos.</p>
+      <p>Tú permaneces anónimo. Al otro lado hay una persona real, contigo en silencio durante veinte minutos.</p>
 
       <div class="lr-promises">
         <div class="lr-promise-item">
-          <strong>Siempre capacitados.</strong>
-          Nunca desconocidos al azar. Nunca bots.
+          <strong>Siempre humano.</strong>
+          Nunca bots. Nunca guiones.
         </div>
         <div class="lr-promise-item">
           <strong>Siempre anónimo.</strong>
           No das nada más que lo que elijas.
         </div>
         <div class="lr-promise-item">
-          <strong>Siempre gratis para empezar.</strong>
-          Propina después, si ayudó.
+          <strong>Gratis durante el piloto.</strong>
+          Sin pagos, sin tarjeta.
         </div>
         <div class="lr-promise-item">
           <strong>Siempre tranquilo.</strong>
@@ -1199,23 +1183,23 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3 class="step-title">Abre y escribe</h3>
-        <p class="step-text">No necesitas cuenta para empezar. Solo comienza. Tus palabras se quedan en tu dispositivo hasta que decidas lo contrario.</p>
+        <h3 class="step-title">Escribe, dibuja o habla</h3>
+        <p class="step-text">Crea una cuenta gratis solo con tu email. Escribe, dibuja o usa tu voz. Nadie lo lee excepto tú.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3 class="step-title">Guarda, suelta o comparte</h3>
-        <p class="step-text">Guárdalo en privado. Bórralo para siempre. O compártelo anónimamente para que alguien que lo necesite pueda leerlo.</p>
+        <h3 class="step-title">Refleja un dibujo</h3>
+        <p class="step-text">¿No sabes qué dibujaste? Toca Reflejar para una lectura breve y delicada de tus trazos. Nunca un diagnóstico.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3 class="step-title">Habla con un oyente real</h3>
-        <p class="step-text">Cuando escribir no alcanza, la Sala de Escucha se abre. Veinte minutos con un ser humano capacitado y anónimo. Gratis para empezar.</p>
+        <h3 class="step-title">Habla con una persona real</h3>
+        <p class="step-text">Cuando escribir no alcanza, la Sala de Escucha se abre. Veinte minutos tranquilos con un ser humano.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <h3 class="step-title">Recibe tu reflexión semanal</h3>
-        <p class="step-text">Cada domingo, una carta escrita para ti con tus propias palabras. No es un gráfico de ánimo. Es un espejo — delicado, literario y tuyo.</p>
+        <h3 class="step-title">Recibe tu carta semanal</h3>
+        <p class="step-text">Cada domingo, una carta escrita para ti con tus propias palabras y dibujos. No es un gráfico de ánimo. Es un espejo.</p>
       </div>
     </div>
   </div>
@@ -1233,23 +1217,19 @@
       </div>
       <div class="promise">
         <h4 class="promise-title">Datos nunca vendidos</h4>
-        <p class="promise-text">Ni a anunciantes. Ni a nadie. Ni ahora ni nunca. Está escrito en los estatutos de la empresa.</p>
+        <p class="promise-text">Ni a anunciantes. Ni a nadie. Ni ahora ni nunca.</p>
       </div>
       <div class="promise">
-        <h4 class="promise-title">La IA no finge ser tú</h4>
-        <p class="promise-text">Escritura real de personas reales. Sin confesiones generadas. Sin empatía falsa.</p>
+        <h4 class="promise-title">IA que refleja, nunca finge</h4>
+        <p class="promise-text">La IA ayuda a escribir tu carta semanal y a reflejar tus dibujos, usando solo tus palabras y trazos. Nunca escribe por ti, nunca diagnostica y nunca finge ser una persona.</p>
       </div>
       <div class="promise">
         <h4 class="promise-title">Sin perfiles, sin seguidores</h4>
         <p class="promise-text">El anonimato no es una función aquí. Es todo el sentido. No hay nada que mostrar.</p>
       </div>
       <div class="promise">
-        <h4 class="promise-title">Privado por defecto</h4>
-        <p class="promise-text">Nada de lo que escribes se comparte a menos que tú activamente elijas hacerlo. La mayoría de las cosas no deberían.</p>
-      </div>
-      <div class="promise">
-        <h4 class="promise-title">Una parte devuelta</h4>
-        <p class="promise-text">1% de cada euro que ganamos se dona a organizaciones de salud mental en los países donde operamos.</p>
+        <h4 class="promise-title">Privado, siempre</h4>
+        <p class="promise-text">Nada de lo que escribes se comparte nunca. No existe esa función.</p>
       </div>
     </div>
   </div>
