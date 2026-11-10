@@ -1066,12 +1066,19 @@
   .reveal-fade { opacity: 0; transition: opacity .8s ease; transition-delay: calc(var(--i, 0) * 70ms); }
   .visible .reveal-fade { opacity: 1; }
 
-  /* Sectioned pages on larger screens: each section fills the screen (paging handled in script) */
+  /* Sectioned pages on larger screens: native scroll snapping (browser-smooth, same up and down) */
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
+    html { scroll-snap-type: y mandatory; }
+    nav.top { scroll-snap-align: start; }
     .hero, section.fade-in {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
       margin-top: 0; margin-bottom: 0; padding-top: 48px; padding-bottom: 48px;
     }
+    section.fade-in { scroll-snap-align: start; scroll-snap-stop: always; }
+    .hero { min-height: calc(100vh - var(--nav-h, 64px)); }
+    /* last page = closing + footer together, so the footer never jumps in */
+    section.closing.fade-in { min-height: calc(100vh - var(--foot-h, 120px)); }
+    footer { margin-top: 0; }
   }
 
   /* Whispers: two slow drifting rows of notes */
@@ -1477,63 +1484,13 @@
     sections.forEach(s => io.observe(s));
     requestAnimationFrame(() => sections[0] && sections[0].classList.add('visible'));
 
-    // ---------- Section paging (desktop mouse/trackpad + keyboard) ----------
-    const pager = matchMedia('(min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine)');
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-    const nav = document.querySelector('nav.top');
-    const hero = sections[0];
-    const fitHero = () => { if (hero) hero.style.minHeight = pager.matches ? `calc(100vh - ${nav ? nav.offsetHeight : 0}px)` : ''; };
-    fitHero(); addEventListener('resize', fitHero);
-    const tops = () => sections.map((s, i) => i === 0 ? 0 : s.offsetTop);
-    const bottoms = () => sections.map(s => s.offsetTop + s.offsetHeight);
-    const currentIndex = () => { const t = tops(); let k = 0; t.forEach((v, i) => { if (scrollY >= v - 6) k = i; }); return k; };
-    let animating = false, lastEvt = 0, lastAbs = 0;
-    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    function glideTo(y) {
-      if (reduced.matches) { scrollTo(0, y); return; }
-      animating = true;
-      const root = document.documentElement, prev = root.style.scrollBehavior;
-      root.style.scrollBehavior = 'auto';
-      const from = scrollY, dist = y - from, dur = Math.min(780, 460 + Math.abs(dist) * 0.2);
-      let t0 = null;
-      (function step(ts) {
-        if (t0 === null) t0 = ts;
-        const p = Math.min((ts - t0) / dur, 1);
-        scrollTo(0, from + dist * ease(p));
-        if (p < 1) requestAnimationFrame(step);
-        else { root.style.scrollBehavior = prev; setTimeout(() => { animating = false; }, 80); }
-      })(performance.now());
-    }
-    function go(dir) {
-      const t = tops(), i = currentIndex(), j = Math.max(0, Math.min(t.length - 1, i + dir));
-      if (j !== i) glideTo(t[j]);
-      return j !== i;
-    }
-    addEventListener('wheel', e => {
-      if (!pager.matches || reduced.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-      const t = tops(), b = bottoms(), i = currentIndex(), last = t.length - 1;
-      const down = e.deltaY > 0;
-      // scroll normally inside a section taller than the screen, and into the footer
-      if (down && (i === last || scrollY + innerHeight < b[i] - 6)) return;
-      if (!down && scrollY > t[i] + 6) return;
-      e.preventDefault();
-      const now = performance.now(), abs = Math.abs(e.deltaY);
-      const newGesture = now - lastEvt > 220 || abs > lastAbs * 1.6 + 12;
-      lastEvt = now; lastAbs = abs;
-      if (animating || !newGesture || abs < 4) return;
-      go(down ? 1 : -1);
-    }, { passive: false });
-    addEventListener('keydown', e => {
-      if (!pager.matches || reduced.matches || e.target.closest('input, textarea, select, [contenteditable], .lang')) return;
-      const k = e.key, t = tops(), b = bottoms(), i = currentIndex();
-      const down = k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey);
-      const up = k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey);
-      if (!down && !up) return;
-      if (down && scrollY + innerHeight < b[i] - 6) return;
-      if (up && scrollY > t[i] + 6) return;
-      if (animating) { e.preventDefault(); return; }
-      if (go(down ? 1 : -1)) e.preventDefault();
-    });
+    // ---------- Page sizing for native section snapping ----------
+    const nav = document.querySelector('nav.top'), foot = document.querySelector('footer');
+    const size = () => {
+      document.documentElement.style.setProperty('--nav-h', (nav ? nav.offsetHeight : 0) + 'px');
+      document.documentElement.style.setProperty('--foot-h', (foot ? document.documentElement.scrollHeight - foot.offsetTop : 0) + 'px');
+    };
+    size(); addEventListener('resize', size);
 
     // ---------- Language picker ----------
     const lang = document.querySelector('.lang');
