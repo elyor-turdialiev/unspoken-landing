@@ -1059,8 +1059,8 @@
   .fade-in { opacity: 1; transform: none; transition: none; }
   .reveal-item {
     opacity: 0; transform: translateY(26px); filter: blur(4px);
-    transition: opacity .9s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1), filter .9s ease;
-    transition-delay: calc(var(--i, 0) * 110ms);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1), filter .7s ease;
+    transition-delay: calc(var(--i, 0) * 70ms);
   }
   .visible .reveal-item { opacity: 1; transform: none; filter: none; }
 
@@ -1068,12 +1068,38 @@
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
     .hero, section.fade-in {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-      margin-top: 0; margin-bottom: 0;
+      margin-top: 0; margin-bottom: 0; padding-top: 48px; padding-bottom: 48px;
     }
+  }
+
+  /* Whispers: two slow drifting rows of notes */
+  .whisper-marquee {
+    margin: 28px calc(50% - 50vw) 0; display: grid; gap: 26px; padding: 14px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
+  .whisper-track { display: flex; gap: 24px; width: max-content; animation: whisper-drift 80s linear infinite; }
+  .whisper-row:nth-child(2) .whisper-track { animation-direction: reverse; animation-duration: 95s; }
+  @media (hover: hover) { .whisper-marquee:hover .whisper-track { animation-play-state: paused; } }
+  @keyframes whisper-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .whisper-track .whisper-card {
+    flex: none; width: 330px; margin-top: 0; padding: 30px 26px 22px;
+    transform: rotate(var(--r, 0deg));
+  }
+  .whisper-track .whisper-card:nth-child(odd) { --r: -0.6deg; }
+  .whisper-track .whisper-card:nth-child(3n) { --r: 0.5deg; }
+  @media (hover: hover) { .whisper-track .whisper-card:hover { transform: translateY(-4px) rotate(0deg); } }
+  .whisper-track .whisper-text { font-size: 16.5px; }
+  .whisper-track .whisper-meta { margin-top: 18px; }
+  @media (max-width: 640px) {
+    .whisper-track .whisper-card { width: 270px; padding: 26px 22px 20px; }
+    .whisper-track .whisper-card:nth-child(n) { transform: rotate(var(--r, 0deg)); }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    .whisper-track { animation: none; }
+    .whisper-row { overflow-x: auto; }
     .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
@@ -1127,18 +1153,110 @@
 <section class="whispers fade-in">
   <div class="wrap">
     <div class="section-label">— То, что люди несут в себе —</div>
-    <div class="whisper-grid">
-      <div class="whisper-card">
-        <p class="whisper-text">«Я так долго делал вид, что всё в порядке, что забыл, каково это — когда действительно в порядке.»</p>
-        <div class="whisper-meta">Пример · С облегчением</div>
+    <div class="whisper-marquee">
+      <div class="whisper-row">
+        <div class="whisper-track">
+          <div class="whisper-card">
+            <p class="whisper-text">«Я так долго делал вид, что всё в порядке, что забыл, каково это — когда действительно в порядке.»</p>
+            <div class="whisper-meta">Пример · С облегчением</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Сегодня я так смеялась в автобусе, что незнакомый человек засмеялся вместе со мной. Хочу это запомнить.»</p>
+            <div class="whisper-meta">Пример · Радостно</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Все говорят, что я сильная. Я так устала быть сильной.»</p>
+            <div class="whisper-meta">Пример · Устала</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Отцу, которого я никогда не видел: я построил жизнь, которой ты бы гордился. Надеюсь.»</p>
+            <div class="whisper-meta">Пример · Неотправленное письмо</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Новый город. Тишина в этой квартире громче всего на свете.»</p>
+            <div class="whisper-meta">Пример · Одиноко</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Сдала экзамен. Никто не знает, как близко я была к тому, чтобы сдаться.»</p>
+            <div class="whisper-meta">Пример · С гордостью</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Я так долго делал вид, что всё в порядке, что забыл, каково это — когда действительно в порядке.»</p>
+            <div class="whisper-meta">Пример · С облегчением</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Сегодня я так смеялась в автобусе, что незнакомый человек засмеялся вместе со мной. Хочу это запомнить.»</p>
+            <div class="whisper-meta">Пример · Радостно</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Все говорят, что я сильная. Я так устала быть сильной.»</p>
+            <div class="whisper-meta">Пример · Устала</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Отцу, которого я никогда не видел: я построил жизнь, которой ты бы гордился. Надеюсь.»</p>
+            <div class="whisper-meta">Пример · Неотправленное письмо</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Новый город. Тишина в этой квартире громче всего на свете.»</p>
+            <div class="whisper-meta">Пример · Одиноко</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Сдала экзамен. Никто не знает, как близко я была к тому, чтобы сдаться.»</p>
+            <div class="whisper-meta">Пример · С гордостью</div>
+          </div>
+        </div>
       </div>
-      <div class="whisper-card">
-        <p class="whisper-text">«Отцу, которого я никогда не видел: я построил жизнь, которой ты бы гордился. Надеюсь.»</p>
-        <div class="whisper-meta">Пример · Неотправленное письмо</div>
-      </div>
-      <div class="whisper-card">
-        <p class="whisper-text">«Я увольнялся в голове семьсот раз за этот год. Завтра сделаю это по-настоящему.»</p>
-        <div class="whisper-meta">Пример · Полон надежды</div>
+      <div class="whisper-row">
+        <div class="whisper-track">
+          <div class="whisper-card">
+            <p class="whisper-text">«Я увольнялся в голове семьсот раз за этот год. Завтра сделаю это по-настоящему.»</p>
+            <div class="whisper-meta">Пример · Полон надежды</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Скучаю по себе — тому, кем я был, пока не научился осторожности.»</p>
+            <div class="whisper-meta">Пример · С тоской</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Твоё голосовое до сих пор у меня. Я его не слушаю. Мне просто нужно знать, что оно есть.»</p>
+            <div class="whisper-meta">Пример · В горе</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Сегодня я сказал «нет» — мягко и чётко. Руки дрожали, но я сказал.»</p>
+            <div class="whisper-meta">Пример · Уверенно</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Мама спросила, счастлив ли я. Я ответил «да» слишком быстро.»</p>
+            <div class="whisper-meta">Пример · Тяжело</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">«Иногда меня не нужно чинить. Нужно просто, чтобы кто-то сказал: я тебя слышу.»</p>
+            <div class="whisper-meta">Пример · Нежно</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Я увольнялся в голове семьсот раз за этот год. Завтра сделаю это по-настоящему.»</p>
+            <div class="whisper-meta">Пример · Полон надежды</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Скучаю по себе — тому, кем я был, пока не научился осторожности.»</p>
+            <div class="whisper-meta">Пример · С тоской</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Твоё голосовое до сих пор у меня. Я его не слушаю. Мне просто нужно знать, что оно есть.»</p>
+            <div class="whisper-meta">Пример · В горе</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Сегодня я сказал «нет» — мягко и чётко. Руки дрожали, но я сказал.»</p>
+            <div class="whisper-meta">Пример · Уверенно</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Мама спросила, счастлив ли я. Я ответил «да» слишком быстро.»</p>
+            <div class="whisper-meta">Пример · Тяжело</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">«Иногда меня не нужно чинить. Нужно просто, чтобы кто-то сказал: я тебя слышу.»</p>
+            <div class="whisper-meta">Пример · Нежно</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1375,14 +1493,14 @@
       animating = true;
       const root = document.documentElement, prev = root.style.scrollBehavior;
       root.style.scrollBehavior = 'auto';
-      const from = scrollY, dist = y - from, dur = Math.min(1100, 650 + Math.abs(dist) * 0.25);
+      const from = scrollY, dist = y - from, dur = Math.min(780, 460 + Math.abs(dist) * 0.2);
       let t0 = null;
       (function step(ts) {
         if (t0 === null) t0 = ts;
         const p = Math.min((ts - t0) / dur, 1);
         scrollTo(0, from + dist * ease(p));
         if (p < 1) requestAnimationFrame(step);
-        else { root.style.scrollBehavior = prev; setTimeout(() => { animating = false; }, 120); }
+        else { root.style.scrollBehavior = prev; setTimeout(() => { animating = false; }, 80); }
       })(performance.now());
     }
     function go(dir) {

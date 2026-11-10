@@ -1059,8 +1059,8 @@
   .fade-in { opacity: 1; transform: none; transition: none; }
   .reveal-item {
     opacity: 0; transform: translateY(26px); filter: blur(4px);
-    transition: opacity .9s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1), filter .9s ease;
-    transition-delay: calc(var(--i, 0) * 110ms);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1), filter .7s ease;
+    transition-delay: calc(var(--i, 0) * 70ms);
   }
   .visible .reveal-item { opacity: 1; transform: none; filter: none; }
 
@@ -1068,12 +1068,38 @@
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
     .hero, section.fade-in {
       min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-      margin-top: 0; margin-bottom: 0;
+      margin-top: 0; margin-bottom: 0; padding-top: 48px; padding-bottom: 48px;
     }
+  }
+
+  /* Whispers: two slow drifting rows of notes */
+  .whisper-marquee {
+    margin: 28px calc(50% - 50vw) 0; display: grid; gap: 26px; padding: 14px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
+  .whisper-track { display: flex; gap: 24px; width: max-content; animation: whisper-drift 80s linear infinite; }
+  .whisper-row:nth-child(2) .whisper-track { animation-direction: reverse; animation-duration: 95s; }
+  @media (hover: hover) { .whisper-marquee:hover .whisper-track { animation-play-state: paused; } }
+  @keyframes whisper-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .whisper-track .whisper-card {
+    flex: none; width: 330px; margin-top: 0; padding: 30px 26px 22px;
+    transform: rotate(var(--r, 0deg));
+  }
+  .whisper-track .whisper-card:nth-child(odd) { --r: -0.6deg; }
+  .whisper-track .whisper-card:nth-child(3n) { --r: 0.5deg; }
+  @media (hover: hover) { .whisper-track .whisper-card:hover { transform: translateY(-4px) rotate(0deg); } }
+  .whisper-track .whisper-text { font-size: 16.5px; }
+  .whisper-track .whisper-meta { margin-top: 18px; }
+  @media (max-width: 640px) {
+    .whisper-track .whisper-card { width: 270px; padding: 26px 22px 20px; }
+    .whisper-track .whisper-card:nth-child(n) { transform: rotate(var(--r, 0deg)); }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    .whisper-track { animation: none; }
+    .whisper-row { overflow-x: auto; }
     .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
@@ -1127,18 +1153,110 @@
 <section class="whispers fade-in">
   <div class="wrap">
     <div class="section-label">— A few things people carry —</div>
-    <div class="whisper-grid">
-      <div class="whisper-card">
-        <p class="whisper-text">"I've been pretending to be okay for so long that I forgot what okay actually feels like."</p>
-        <div class="whisper-meta">Example · Relieved</div>
+    <div class="whisper-marquee">
+      <div class="whisper-row">
+        <div class="whisper-track">
+          <div class="whisper-card">
+            <p class="whisper-text">"I've been pretending to be okay for so long that I forgot what okay actually feels like."</p>
+            <div class="whisper-meta">Example · Relieved</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"Today I laughed so hard on the bus that a stranger laughed too. I want to remember this."</p>
+            <div class="whisper-meta">Example · Joyful</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"Everyone says I'm the strong one. I'm so tired of being the strong one."</p>
+            <div class="whisper-meta">Example · Tired</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"To the father I never met: I built a life you would have been proud of. I hope."</p>
+            <div class="whisper-meta">Example · A letter unsent</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"New city. The silence in this flat is louder than anything."</p>
+            <div class="whisper-meta">Example · Alone</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"Passed the exam. Nobody knows how close I came to giving up."</p>
+            <div class="whisper-meta">Example · Proud</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"I've been pretending to be okay for so long that I forgot what okay actually feels like."</p>
+            <div class="whisper-meta">Example · Relieved</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"Today I laughed so hard on the bus that a stranger laughed too. I want to remember this."</p>
+            <div class="whisper-meta">Example · Joyful</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"Everyone says I'm the strong one. I'm so tired of being the strong one."</p>
+            <div class="whisper-meta">Example · Tired</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"To the father I never met: I built a life you would have been proud of. I hope."</p>
+            <div class="whisper-meta">Example · A letter unsent</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"New city. The silence in this flat is louder than anything."</p>
+            <div class="whisper-meta">Example · Alone</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"Passed the exam. Nobody knows how close I came to giving up."</p>
+            <div class="whisper-meta">Example · Proud</div>
+          </div>
+        </div>
       </div>
-      <div class="whisper-card">
-        <p class="whisper-text">"To the father I never met: I built a life you would have been proud of. I hope."</p>
-        <div class="whisper-meta">Example · A letter unsent</div>
-      </div>
-      <div class="whisper-card">
-        <p class="whisper-text">"I quit my job in my head seven hundred times this year. Tomorrow I'm going to do it for real."</p>
-        <div class="whisper-meta">Example · Hopeful</div>
+      <div class="whisper-row">
+        <div class="whisper-track">
+          <div class="whisper-card">
+            <p class="whisper-text">"I quit my job in my head seven hundred times this year. Tomorrow I'm going to do it for real."</p>
+            <div class="whisper-meta">Example · Hopeful</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"I miss who I was before I learned to be careful."</p>
+            <div class="whisper-meta">Example · Longing</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"I still have your voice message. I don't play it. I just need to know it's there."</p>
+            <div class="whisper-meta">Example · Grieving</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"I said no today, kindly and clearly. My hands were shaking, but I said it."</p>
+            <div class="whisper-meta">Example · Grounded</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"My mum asked if I'm happy. I said yes too fast."</p>
+            <div class="whisper-meta">Example · Heavy</div>
+          </div>
+          <div class="whisper-card">
+            <p class="whisper-text">"Some days I don't need fixing. I just need someone to say: I hear you."</p>
+            <div class="whisper-meta">Example · Tender</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"I quit my job in my head seven hundred times this year. Tomorrow I'm going to do it for real."</p>
+            <div class="whisper-meta">Example · Hopeful</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"I miss who I was before I learned to be careful."</p>
+            <div class="whisper-meta">Example · Longing</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"I still have your voice message. I don't play it. I just need to know it's there."</p>
+            <div class="whisper-meta">Example · Grieving</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"I said no today, kindly and clearly. My hands were shaking, but I said it."</p>
+            <div class="whisper-meta">Example · Grounded</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"My mum asked if I'm happy. I said yes too fast."</p>
+            <div class="whisper-meta">Example · Heavy</div>
+          </div>
+          <div class="whisper-card" aria-hidden="true">
+            <p class="whisper-text">"Some days I don't need fixing. I just need someone to say: I hear you."</p>
+            <div class="whisper-meta">Example · Tender</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1375,14 +1493,14 @@
       animating = true;
       const root = document.documentElement, prev = root.style.scrollBehavior;
       root.style.scrollBehavior = 'auto';
-      const from = scrollY, dist = y - from, dur = Math.min(1100, 650 + Math.abs(dist) * 0.25);
+      const from = scrollY, dist = y - from, dur = Math.min(780, 460 + Math.abs(dist) * 0.2);
       let t0 = null;
       (function step(ts) {
         if (t0 === null) t0 = ts;
         const p = Math.min((ts - t0) / dur, 1);
         scrollTo(0, from + dist * ease(p));
         if (p < 1) requestAnimationFrame(step);
-        else { root.style.scrollBehavior = prev; setTimeout(() => { animating = false; }, 120); }
+        else { root.style.scrollBehavior = prev; setTimeout(() => { animating = false; }, 80); }
       })(performance.now());
     }
     function go(dir) {
