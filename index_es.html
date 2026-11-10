@@ -1058,11 +1058,13 @@
   /* Staggered reveal: children of each section rise in one after another */
   .fade-in { opacity: 1; transform: none; transition: none; }
   .reveal-item {
-    opacity: 0; transform: translateY(26px); filter: blur(4px);
-    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1), filter .7s ease;
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
     transition-delay: calc(var(--i, 0) * 70ms);
   }
-  .visible .reveal-item { opacity: 1; transform: none; filter: none; }
+  .visible .reveal-item { opacity: 1; transform: none; }
+  .reveal-fade { opacity: 0; transition: opacity .8s ease; transition-delay: calc(var(--i, 0) * 70ms); }
+  .visible .reveal-fade { opacity: 1; }
 
   /* Sectioned pages on larger screens: each section fills the screen (paging handled in script) */
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
@@ -1100,7 +1102,7 @@
     html { scroll-behavior: auto; }
     .whisper-track { animation: none; }
     .whisper-row { overflow-x: auto; }
-    .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
+    .reveal-item, .reveal-fade { opacity: 1; transform: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
 </style>
@@ -1269,8 +1271,8 @@
       <div class="micro-label">— Lo que recibes a cambio —</div>
       <h2>La primera app que te <em>lee de vuelta</em> a ti mismo.</h2>
       <p>La mayoría de las apps te dan un gráfico. Nosotros te damos una carta.</p>
-      <p>Cada domingo, Unspoken toma todo lo que escribiste y dibujaste esa semana y te lo devuelve — con delicadeza, literariamente, con tus propias palabras. No es terapia. No es una puntuación de ánimo. Es un espejo.</p>
-      <p>Verás cosas en tu semana que no podías ver mientras la vivías. La palabra a la que volvías una y otra vez. La frase que importaba más de lo que creías. La forma de lo que realmente sentías.</p>
+      <p>Cada domingo, Unspoken te escribe tu semana de vuelta, con tus propias palabras y dibujos. No es terapia. No es una puntuación. Es un espejo.</p>
+      <p>Verás la palabra a la que volvías una y otra vez, y la frase que importaba más de lo que creías.</p>
       <div class="reflection-stats">
         <div class="stat-item">
           <div class="num">1</div>
@@ -1289,17 +1291,16 @@
 
     <div class="letter">
       <div class="letter-header">
-        <div class="letter-eyebrow">— Una reflexión real —</div>
+        <div class="letter-eyebrow">— Una carta de ejemplo —</div>
         <div class="letter-date">20 de julio — 26 de julio</div>
       </div>
-      <h3>Una semana sostenida en un momento <em>muy emocionado</em>.</h3>
+      <h3>Una semana que no dejó de <em>buscar a los demás</em>.</h3>
       <div class="letter-body">
-        <p>Escribiste diez palabras, y siete de ellas fueron sobre otras personas. Esa proporción ya dice algo por sí sola.</p>
-        <p>El estado de ánimo que elegiste fue <strong>agradecido</strong>, pero las palabras que usaste eran <em>muy emocionado</em> — hay una diferencia entre esos dos sentimientos, y aterrizaste en ambos. La gratitud puede ser silenciosa, pero la emoción se mueve. Se extiende hacia afuera.</p>
-        <div class="letter-pullquote">«Estoy muy emocionado por las personas que tengo a mi alrededor»</div>
-        <p>Una entrada esta semana, y fue el viernes — justo en medio de todo, no al final mirando hacia atrás. Estabas escribiendo desde dentro del sentimiento mismo.</p>
+        <p>Escribiste cuatro veces esta semana, y casi todas tus palabras hablaban de otras personas: tu hermana, el equipo nuevo, un amigo al que no has llamado.</p>
+        <div class="letter-pullquote">«Creo que soy más feliz de lo que me permito admitir.»</div>
+        <p>El lunes elegiste <strong>cansancio</strong> y el viernes, <strong>esperanza</strong>. Algo cambió entre medias. Quizá las personas de las que escribiste tuvieron algo que ver.</p>
       </div>
-      <div class="letter-footer">— Una reflexión real, ligeramente anonimizada · La tuya será sobre tu semana —</div>
+      <div class="letter-footer">— Un ejemplo · La tuya será sobre tu semana —</div>
     </div>
   </div>
 </section>
@@ -1466,9 +1467,9 @@
   // ---------- PATCH 4: staggered section reveals ----------
   (function () {
     const sections = [document.querySelector('.hero'), ...document.querySelectorAll('section.fade-in')].filter(Boolean);
-    sections.forEach(sec => {
+    sections.slice(1).forEach(sec => {
       const wrap = sec.querySelector(':scope > .wrap') || sec;
-      [...wrap.children].forEach((el, i) => { el.classList.add('reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
+      [...wrap.children].forEach((el, i) => { el.classList.add(getComputedStyle(el).transform !== 'none' ? 'reveal-fade' : 'reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
     });
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });

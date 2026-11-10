@@ -1058,11 +1058,13 @@
   /* Staggered reveal: children of each section rise in one after another */
   .fade-in { opacity: 1; transform: none; transition: none; }
   .reveal-item {
-    opacity: 0; transform: translateY(26px); filter: blur(4px);
-    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1), filter .7s ease;
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
     transition-delay: calc(var(--i, 0) * 70ms);
   }
-  .visible .reveal-item { opacity: 1; transform: none; filter: none; }
+  .visible .reveal-item { opacity: 1; transform: none; }
+  .reveal-fade { opacity: 0; transition: opacity .8s ease; transition-delay: calc(var(--i, 0) * 70ms); }
+  .visible .reveal-fade { opacity: 1; }
 
   /* Sectioned pages on larger screens: each section fills the screen (paging handled in script) */
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
@@ -1100,7 +1102,7 @@
     html { scroll-behavior: auto; }
     .whisper-track { animation: none; }
     .whisper-row { overflow-x: auto; }
-    .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
+    .reveal-item, .reveal-fade { opacity: 1; transform: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
 </style>
@@ -1269,8 +1271,8 @@
       <div class="micro-label">— What you get back —</div>
       <h2>The first app that <em>reads you</em> back to yourself.</h2>
       <p>Most apps give you a chart. We give you a letter.</p>
-      <p>Every Sunday, Unspoken takes everything you wrote and drew that week and writes it back to you — gently, literarily, and in your own words. Not therapy. Not a mood score. A mirror.</p>
-      <p>You will see things in your week you couldn't see while you were living it. The word you kept circling back to. The sentence that mattered more than you knew. The shape of how you actually felt.</p>
+      <p>Every Sunday, Unspoken writes your week back to you, from your own words and drawings. Not therapy. Not a score. A mirror.</p>
+      <p>You'll see the word you kept returning to, and the sentence that mattered more than you knew.</p>
       <div class="reflection-stats">
         <div class="stat-item">
           <div class="num">1</div>
@@ -1289,17 +1291,16 @@
 
     <div class="letter">
       <div class="letter-header">
-        <div class="letter-eyebrow">— A real reflection —</div>
+        <div class="letter-eyebrow">— An example letter —</div>
         <div class="letter-date">July 20 — July 26</div>
       </div>
-      <h3>A week held in one <em>very excited</em> moment.</h3>
+      <h3>A week that kept <em>reaching outward</em>.</h3>
       <div class="letter-body">
-        <p>You wrote ten words, and seven of them were about other people. That ratio says something all on its own.</p>
-        <p>The mood you chose was <strong>grateful</strong>, but the words you used were <em>very excited</em> — there's a difference between those two feelings, and you landed on both. Gratitude can be quiet, but excitement moves. It reaches outward.</p>
-        <div class="letter-pullquote">"I am very excited about people i have around me"</div>
-        <p>One entry this week, and it was Friday — right in the middle of everything, not at the end looking back. You were writing from inside the feeling itself.</p>
+        <p>You wrote four times this week, and most of your words were about other people: your sister, the new team, a friend you haven't called.</p>
+        <div class="letter-pullquote">"I think I'm happier than I let myself admit."</div>
+        <p>You chose <strong>tired</strong> on Monday and <strong>hopeful</strong> by Friday. Something shifted in between. Maybe the people you wrote about had something to do with it.</p>
       </div>
-      <div class="letter-footer">— A real reflection, lightly anonymised · Yours will be about your week —</div>
+      <div class="letter-footer">— An example · Yours will be about your week —</div>
     </div>
   </div>
 </section>
@@ -1466,9 +1467,9 @@
   // ---------- PATCH 4: staggered section reveals ----------
   (function () {
     const sections = [document.querySelector('.hero'), ...document.querySelectorAll('section.fade-in')].filter(Boolean);
-    sections.forEach(sec => {
+    sections.slice(1).forEach(sec => {
       const wrap = sec.querySelector(':scope > .wrap') || sec;
-      [...wrap.children].forEach((el, i) => { el.classList.add('reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
+      [...wrap.children].forEach((el, i) => { el.classList.add(getComputedStyle(el).transform !== 'none' ? 'reveal-fade' : 'reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
     });
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });

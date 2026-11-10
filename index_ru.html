@@ -1058,11 +1058,13 @@
   /* Staggered reveal: children of each section rise in one after another */
   .fade-in { opacity: 1; transform: none; transition: none; }
   .reveal-item {
-    opacity: 0; transform: translateY(26px); filter: blur(4px);
-    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1), filter .7s ease;
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
     transition-delay: calc(var(--i, 0) * 70ms);
   }
-  .visible .reveal-item { opacity: 1; transform: none; filter: none; }
+  .visible .reveal-item { opacity: 1; transform: none; }
+  .reveal-fade { opacity: 0; transition: opacity .8s ease; transition-delay: calc(var(--i, 0) * 70ms); }
+  .visible .reveal-fade { opacity: 1; }
 
   /* Sectioned pages on larger screens: each section fills the screen (paging handled in script) */
   @media (min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine) {
@@ -1100,7 +1102,7 @@
     html { scroll-behavior: auto; }
     .whisper-track { animation: none; }
     .whisper-row { overflow-x: auto; }
-    .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
+    .reveal-item, .reveal-fade { opacity: 1; transform: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
 </style>
@@ -1269,8 +1271,8 @@
       <div class="micro-label">— Что вы получаете взамен —</div>
       <h2>Первое приложение, которое <em>читает вас</em> вам обратно.</h2>
       <p>Большинство приложений дают график. Мы даём письмо.</p>
-      <p>Каждое воскресенье Unspoken берёт всё, что вы написали и нарисовали за неделю, и возвращает вам — бережно, литературно, вашими же словами. Не терапия. Не оценка настроения. Зеркало.</p>
-      <p>Вы увидите в своей неделе то, что не могли увидеть, пока жили в ней. Слово, к которому возвращались снова и снова. Фразу, которая значила больше, чем вам казалось. Форму того, что вы на самом деле чувствовали.</p>
+      <p>Каждое воскресенье Unspoken пишет вам о вашей неделе — из ваших же слов и рисунков. Не терапия. Не оценка. Зеркало.</p>
+      <p>Вы увидите слово, к которому возвращались снова и снова, и фразу, которая значила больше, чем казалось.</p>
       <div class="reflection-stats">
         <div class="stat-item">
           <div class="num">1</div>
@@ -1289,17 +1291,16 @@
 
     <div class="letter">
       <div class="letter-header">
-        <div class="letter-eyebrow">— Настоящее отражение —</div>
+        <div class="letter-eyebrow">— Пример письма —</div>
         <div class="letter-date">20 июля — 26 июля</div>
       </div>
-      <h3>Неделя, уместившаяся в один <em>очень взволнованный</em> момент.</h3>
+      <h3>Неделя, которая всё время <em>тянулась к людям</em>.</h3>
       <div class="letter-body">
-        <p>Вы написали десять слов, и семь из них были о других людях. Это соотношение уже само по себе о чём-то говорит.</p>
-        <p>Настроение, которое вы выбрали — <strong>благодарность</strong>, но слова, которые вы использовали, — <em>очень взволнован</em>. Это два разных чувства, и вы оказались в обоих. Благодарность может быть тихой, но волнение движется. Оно тянется наружу.</p>
-        <div class="letter-pullquote">«Я очень рад людям, которые у меня есть»</div>
-        <p>Одна запись за неделю, и это была пятница — прямо в середине всего, не в конце, оглядываясь назад. Вы писали изнутри самого чувства.</p>
+        <p>На этой неделе ты писал четыре раза, и больше всего — о других: о сестре, о новой команде, о друге, которому давно не звонил.</p>
+        <div class="letter-pullquote">«Кажется, я счастливее, чем позволяю себе признать.»</div>
+        <p>В понедельник ты выбрал <strong>усталость</strong>, а к пятнице — <strong>надежду</strong>. Что-то изменилось между ними. Может быть, к этому причастны люди, о которых ты писал.</p>
       </div>
-      <div class="letter-footer">— Настоящее отражение, слегка анонимизированное · Ваше будет о вашей неделе —</div>
+      <div class="letter-footer">— Пример · Ваше письмо будет о вашей неделе —</div>
     </div>
   </div>
 </section>
@@ -1466,9 +1467,9 @@
   // ---------- PATCH 4: staggered section reveals ----------
   (function () {
     const sections = [document.querySelector('.hero'), ...document.querySelectorAll('section.fade-in')].filter(Boolean);
-    sections.forEach(sec => {
+    sections.slice(1).forEach(sec => {
       const wrap = sec.querySelector(':scope > .wrap') || sec;
-      [...wrap.children].forEach((el, i) => { el.classList.add('reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
+      [...wrap.children].forEach((el, i) => { el.classList.add(getComputedStyle(el).transform !== 'none' ? 'reveal-fade' : 'reveal-item'); el.style.setProperty('--i', Math.min(i, 6)); });
     });
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
