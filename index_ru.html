@@ -1492,6 +1492,41 @@
     };
     size(); addEventListener('resize', size);
 
+    // ---------- Mouse wheel: calmer glide between sections (trackpads keep native snapping) ----------
+    (function () {
+      const big = matchMedia('(min-width: 900px) and (min-height: 640px) and (hover: hover) and (pointer: fine)');
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+      const root = document.documentElement;
+      const pages = () => [0, ...[...document.querySelectorAll('section.fade-in')].map(s => s.offsetTop)];
+      const maxY = () => root.scrollHeight - innerHeight;
+      const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      let busy = false;
+      const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+      // classic mouse wheels (Windows/Linux): line mode or 120-step notches; Mac trackpads keep native snapping
+      const isMouseWheel = e => !mac && (e.deltaMode === 1 || (e.wheelDeltaY !== undefined && e.wheelDeltaY !== 0 && Math.abs(e.wheelDeltaY) % 120 === 0 && Math.abs(e.deltaY) >= 50));
+      addEventListener('wheel', e => {
+        if (!big.matches || reduced.matches || e.ctrlKey || !isMouseWheel(e)) return;
+        e.preventDefault();
+        if (busy) return;
+        const p = pages(), y = scrollY;
+        let i = 0; p.forEach((v, k) => { if (Math.abs(v - y) < Math.abs(p[i] - y)) i = k; });
+        const j = Math.max(0, Math.min(p.length - 1, i + (e.deltaY > 0 ? 1 : -1)));
+        const to = Math.min(p[j], maxY());
+        if (Math.abs(to - y) < 2) return;
+        busy = true;
+        const snap = root.style.scrollSnapType, beh = root.style.scrollBehavior;
+        root.style.scrollSnapType = 'none'; root.style.scrollBehavior = 'auto';
+        const from = y, dist = to - from, dur = 850; let t0 = null;
+        (function step(ts) {
+          if (t0 === null) t0 = ts;
+          const k = Math.min((ts - t0) / dur, 1);
+          scrollTo(0, from + dist * ease(k));
+          if (k < 1) requestAnimationFrame(step);
+          else { scrollTo(0, to); root.style.scrollSnapType = snap; root.style.scrollBehavior = beh; setTimeout(() => { busy = false; }, 150); }
+        })(performance.now());
+      }, { passive: false });
+    })();
+
     // ---------- Language picker ----------
     const lang = document.querySelector('.lang');
     if (lang) {
