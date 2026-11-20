@@ -24,7 +24,7 @@
 <!-- Fonts: Fraunces (serif, literary warmth) + Inter Tight (clean sans for UI) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Favicon placeholder (emoji for now, replace when logo is ready) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✉%3C/text%3E%3C/svg%3E">
@@ -42,7 +42,7 @@
     --midnight: #1f2937;
     --rule: rgba(26, 22, 19, 0.12);
 
-    --serif: 'Fraunces', 'Georgia', serif;
+    --serif: 'Fraunces', 'Lora', 'Georgia', serif;
     --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
 
     --max: 1100px;
@@ -1118,6 +1118,9 @@
     .reveal-item, .reveal-fade { opacity: 1; transform: none; transition: none; }
     .lang-menu, .lang-btn svg { transition: none; }
   }
+  /* RU: Lora sets larger than Fraunces, so the hero is ~6% smaller */
+  .hero h1 { font-size: clamp(41px, 7.05vw, 86px); }
+  .hero .lede { font-size: clamp(18px, 2.07vw, 21.5px); }
 </style>
 </head>
 <body>
