@@ -197,7 +197,10 @@
       footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
       .footer-text a { margin-left: 0; margin-right: 16px; }
     }
-  </style>
+    @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; animation-timing-function: cubic-bezier(.22,1,.36,1); }
+  @media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
+</style>
 </head>
 <body>
 
