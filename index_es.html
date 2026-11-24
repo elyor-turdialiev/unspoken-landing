@@ -1135,7 +1135,10 @@
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; animation-timing-function: cubic-bezier(.22,1,.36,1); }
 
   /* Small serif titles use the same display cut as the headline and numbers */
-  .step-title, .promise-title { font-weight: 400; font-variation-settings: 'opsz' 72; }
+  .step-title, .promise-title { font-weight: 400; font-variation-settings: 'opsz' 72; font-size: 20px; line-height: 1.3; letter-spacing: -0.005em; }
+  .step-title { margin-bottom: 10px; }
+  .step-text, .promise-text { font-size: 15px; line-height: 1.6; }
+  .step-num { font-size: 48px; }
 
   /* Logo: the flap lifts on hover */
   .logo-mark svg path:last-child { transform-box: fill-box; transform-origin: 50% 0%; transition: transform .5s cubic-bezier(.22,1,.36,1); }
