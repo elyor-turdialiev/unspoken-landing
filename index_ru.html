@@ -1131,24 +1131,9 @@
   /* Small serif titles use the same display cut as the headline and numbers */
   .step-title, .promise-title { font-weight: 400; font-variation-settings: 'opsz' 72; }
 
-  /* Desktop: the next screen is soft while it slides in, sharp once it lands */
-  @supports (animation-timeline: view()) {
-    @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
-      section.fade-in { view-timeline: --sec block; }
-      section.fade-in > * { animation: secClear linear backwards; animation-timeline: --sec; animation-range: entry 0% entry 90%; }
-      @keyframes secClear { from { filter: blur(8px); opacity: .45; } 70% { filter: blur(1.5px); opacity: .9; } to { filter: none; opacity: 1; } }
-    }
-  }
-
   /* Logo: the flap lifts on hover */
   .logo-mark svg path:last-child { transform-box: fill-box; transform-origin: 50% 0%; transition: transform .5s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) { .logo:hover .logo-mark svg path:last-child { transform: scaleY(-1); } }
-
-  /* Hero headline: words rise out of a soft blur */
-  h1.split { opacity: 1; animation: none; }
-  h1.split .w { display: inline-block; opacity: 0; transform: translateY(.35em); filter: blur(10px);
-    animation: wordIn 1.1s cubic-bezier(.22,1,.36,1) forwards; animation-delay: calc(.2s + var(--k) * 70ms); }
-  @keyframes wordIn { to { opacity: 1; transform: none; filter: blur(0); } }
 
   /* Warm light that follows the cursor (desktop only) */
   .glow { position: fixed; left: 0; top: 0; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%;
@@ -1174,13 +1159,12 @@
   @media (hover: hover) { .letgo button:not(:disabled):hover { border-color: rgba(26,22,19,.3); background: rgba(255,255,255,.4); } }
   .letgo-fly { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
   .letgo-fly span { position: absolute; white-space: pre; font: 300 clamp(16px, 1.5vw, 18px)/1.3 var(--serif); font-variation-settings: 'opsz' 24; color: var(--ink);
-    transition: transform 2.6s cubic-bezier(.2,.7,.2,1), opacity 2.3s ease, filter 2.3s ease; will-change: transform, opacity, filter; }
+    transition: transform 2.6s cubic-bezier(.2,.7,.2,1), opacity 2.3s ease; will-change: transform, opacity; }
   @media (max-width: 520px) { .letgo input, .letgo-fly span { font-size: 16px; } .letgo { margin-top: 40px; } }
   .letgo-gone { min-height: 20px; margin-top: 14px; font: 400 13px/1.5 var(--sans); color: var(--ink-whisper); opacity: 0; transition: opacity .8s ease; }
   .letgo-gone.show { opacity: 1; }
 
   @media (prefers-reduced-motion: reduce) {
-    h1.split .w { animation: none; opacity: 1; transform: none; filter: none; }
     .glow { display: none; }
     ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
   }
@@ -1633,28 +1617,6 @@
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    // Hero headline: words rise out of a soft blur
-    const h1 = document.querySelector('.hero h1');
-    if (h1 && !reduced) {
-      let k = 0;
-      const wrapWords = node => {
-        [...node.childNodes].forEach(n => {
-          if (n.nodeType === 3) {
-            const parts = n.textContent.split(/(\s+)/);
-            const frag = document.createDocumentFragment();
-            parts.forEach(p => {
-              if (!p) return;
-              if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
-              const s = document.createElement('span'); s.className = 'w'; s.style.setProperty('--k', k++); s.textContent = p; frag.appendChild(s);
-            });
-            n.replaceWith(frag);
-          } else if (n.nodeType === 1 && n.tagName !== 'BR') wrapWords(n);
-        });
-      };
-      wrapWords(h1);
-      h1.classList.add('split');
-    }
-
     // Warm cursor light + magnetic primary buttons (desktop only)
     if (fine && !reduced) {
       const g = document.createElement('div'); g.className = 'glow'; document.body.prepend(g);
@@ -1690,7 +1652,7 @@
             x += c.measureText(ch).width; fly.appendChild(s);
             const d = 40 + i++ * 38;
             setTimeout(() => { s.style.transform = `translate(${(Math.random() - .5) * 70}px, ${-70 - Math.random() * 110}px) rotate(${(Math.random() - .5) * 46}deg)`;
-              s.style.opacity = 0; s.style.filter = 'blur(7px)'; }, d);
+              s.style.opacity = 0; }, d);
           }
           setTimeout(() => { fly.innerHTML = ''; }, 3200 + i * 38);
           setTimeout(() => { gone.textContent = gone.dataset.gone; gone.classList.add('show'); }, 900 + Math.min(i, 40) * 38);
