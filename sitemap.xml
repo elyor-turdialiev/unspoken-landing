@@ -108,4 +108,40 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unspoken.global/terms" />
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://unspoken.global/care</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unspoken.global/care" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://unspoken.global/care_ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unspoken.global/care_es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://unspoken.global/care_de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unspoken.global/care" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unspoken.global/care_ru</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unspoken.global/care" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://unspoken.global/care_ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unspoken.global/care_es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://unspoken.global/care_de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unspoken.global/care" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unspoken.global/care_es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unspoken.global/care" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://unspoken.global/care_ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unspoken.global/care_es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://unspoken.global/care_de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unspoken.global/care" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unspoken.global/care_de</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unspoken.global/care" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://unspoken.global/care_ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unspoken.global/care_es" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://unspoken.global/care_de" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unspoken.global/care" />
+    <priority>0.7</priority>
+  </url>
 </urlset>
